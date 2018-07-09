@@ -10,7 +10,7 @@ export const HomeIcon = styled(Icon).attrs({
 export const AboutIcon = styled(Icon).attrs({
   name: 'info circle',
   size: 'big',
-});
+})``;
 export const UserIcon = styled(Icon).attrs({
   name: 'bars',
   size: 'big',

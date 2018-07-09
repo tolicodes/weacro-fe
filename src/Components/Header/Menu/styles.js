@@ -9,4 +9,4 @@ export const TagsIcon = styled(Icon).attrs({
   name: 'tags',
   size: 'big',
   style: { opacity: '0.2' },
-});
+})``;
