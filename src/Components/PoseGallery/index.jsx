@@ -16,7 +16,6 @@ const PoseGallery = ({ poses, tag, difficulty, setSlide }) => {
     <PoseGalleryArea>
       <SwipeUI 
         reactSwipe={reactSwipe => (swipe = reactSwipe)}
-        key={poses.length + tag + difficulty }
         updater={setSlide}
       >
         <PosesFilter />
