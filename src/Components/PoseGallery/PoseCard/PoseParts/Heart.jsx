@@ -1,33 +1,29 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { HeartArea, HeartState } from './style';
 
-const Heart = ({ isFavorite, poseID, userID, remove, add }) => (
-	<div
-		style={style.clickableArea}
-		onClick={
-			isFavorite ? () => remove(poseID, userID) : () => add(poseID, userID)
-		}
-	>
-		<Icon.Group style={style.heartStyle}>
-			<Icon name={isFavorite ? `heart` : `empty heart`} color="red" />
-		</Icon.Group>
-	</div>
-);
+const Heart = ({
+  isFavorite, poseID, userID, remove, add,
+}) => {
+  const action = isFavorite ? () => remove(poseID, userID) : () => add(poseID, userID);
+  return (
+    <HeartArea
+      onClick={action}
+    >
+      <HeartState>
+        <Icon name={isFavorite ? 'heart' : 'empty heart'} color="red" />
+      </HeartState>
+    </HeartArea>
+  );
+};
+
+Heart.propTypes = {
+  isFavorite: PropTypes.string.isRequired,
+  poseID: PropTypes.string.isRequired,
+  userID: PropTypes.string.isRequired,
+  remove: PropTypes.func.isRequired,
+  add: PropTypes.func.isRequired,
+};
 
 export default Heart;
-
-var style = {
-	clickableArea: {
-		display: 'flex',
-		width: '70px',
-		height: '70px',
-		paddingLeft: '10px',
-	},
-	heartStyle: {
-		display: 'flex',
-		width: '45px',
-		height: '45px',
-		cursor: 'pointer',
-		fontSize: `3em`,
-	},
-};
