@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import Credit from './Credits';
-import { Phone_Portrait, Phone_Landscape } from '../../DeviceRules';
+import { PhonePortrait, PhoneLandscape } from '../../DeviceRules';
 
 const team = [{
   name: 'Yarden Hochman',
@@ -18,7 +18,7 @@ const AboutPage = styled.div`
   flex-direction: column;
   height: 80vh;
 
-  @media ${Phone_Landscape}{
+  @media ${PhoneLandscape}{
     height: 100vh;
   }
 `;
@@ -26,12 +26,12 @@ const AboutPage = styled.div`
 const Participants = styled.div`
   padding: 10vw;
   padding-top:0;
-  
-  @media ${Phone_Portrait}{
+
+  @media ${PhonePortrait}{
     padding: 0 3px;
     height: 70vh;
   }
-  @media ${Phone_Landscape}{
+  @media ${PhoneLandscape}{
     height: 80%;
     padding:0;
     display:flex;
@@ -45,7 +45,7 @@ const Title = styled.h1`
   font-family: Special Elite;
   text-align: center;
 
-  @media ${Phone_Landscape}{
+  @media ${PhoneLandscape}{
     margin-top:1vh;
     text-align: center;
     padding-top: 3vh;

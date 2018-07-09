@@ -1,5 +1,5 @@
 import React from 'react';
-import { Desktop, Phone_Portrait } from '../../../UI/DeviceRules';
+import { Desktop, PhonePortrait } from '../../../UI/DeviceRules';
 import styled from 'styled-components'
 
 
@@ -16,7 +16,7 @@ export default ({ poseTitle, subtitle }) => (
 const Details = styled.div`
   width: 100%;
 
-  @media ${Phone_Portrait}{
+  @media ${PhonePortrait}{
     display: grid;
     grid-template-columns: 5vw auto 5vw;
     grid-template-rows: 20% auto;
@@ -32,7 +32,7 @@ const Title = styled.h1`
   grid-area: title;
   font-family: Special Elite;
 
-  @media ${Phone_Portrait}{
+  @media ${PhonePortrait}{
     height: 8vh;
   }
   @media ${Desktop}{
@@ -42,7 +42,7 @@ const Title = styled.h1`
 const Subtitle = styled.p`
   font-family: Roboto Condensed;
     grid-area: sub;
-    @media ${Phone_Portrait}{
+    @media ${PhonePortrait}{
       color: black;
       margin-top: 1vh;
     }

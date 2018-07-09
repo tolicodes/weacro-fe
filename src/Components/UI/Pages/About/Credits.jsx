@@ -1,20 +1,26 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import {
   Desktop,
-  Phone_Landscape,
-  Phone_Portrait,
+  PhoneLandscape,
+  PhonePortrait,
   Orange,
-} from '../../../UI/DeviceRules';
+} from "../../DeviceRules";
 
-export default ({ person: { name, img, text, profileSite } }) => (
+export default ({ person: {
+ name, img, text, profileSite 
+} }) => (
   <Credit>
-    <Image src={img} alt={`loading...`}/>
+    <Image src={img} alt="loading..." />
     <Text_Box>
       <Title>
-        <Link href={profileSite}>{name}</Link>
+        <Link href={profileSite}>
+{name}
+</Link>
       </Title>
-      <Credit_Text>{text}</Credit_Text>
+      <Credit_Text>
+{text}
+</Credit_Text>
     </Text_Box>
   </Credit>
 );
@@ -27,14 +33,14 @@ const Credit = styled.div`
   grid-template-columns: 1fr auto 1fr 6fr;
   grid-template-areas: ". img . textbox";
   margin: 2vh 0;
-  @media ${Phone_Portrait}{
+  @media ${PhonePortrait}{
     width: 100%;
     display:flex;
     height:25vh;
     margin: 0 0 6vh 0;
     padding: 0 5px;
   }
-  @media ${Phone_Landscape}{
+  @media ${PhoneLandscape}{
     display: flex;
     height:80%;
     margin: 0 0 1vh 0;
@@ -47,12 +53,12 @@ const Image = styled.img`
       height: 100%
       border-radius: 5px
     }
-    @media ${Phone_Portrait}{
+    @media ${PhonePortrait}{
       width: 40vw
       height: auto
       margin-top: 5vh
     }
-    @media ${Phone_Landscape}{
+    @media ${PhoneLandscape}{
       height: 100%;
       width: 158px;
     }
@@ -63,10 +69,10 @@ const Text_Box = styled.div`
   flex-direction: column;
   justify-content: space-around;
   padding: 1vh;
-  @media ${Phone_Portrait}{
+  @media ${PhonePortrait}{
     margin-left: 20px;
   }
-  @media ${Phone_Landscape}{
+  @media ${PhoneLandscape}{
     margin-left: 8vw;
   }
 `;
@@ -76,11 +82,11 @@ const Credit_Text = styled.p`
   margin: 3vh 0;
   font-size: 1.5vh;
   font-family: Roboto Condensed;
-  @media ${Phone_Portrait}{
+  @media ${PhonePortrait}{
     margin: 1vh 0;
     font-size: 0.8rem;
   }
-  @media ${Phone_Landscape}{
+  @media ${PhoneLandscape}{
     font-size:3vh;
   }
 `;
@@ -88,7 +94,7 @@ const Link = styled.a`
   color: ${Orange};
 `;
 const Title = styled.h2`
-  @media ${Phone_Portrait}{
+  @media ${PhonePortrait}{
     font-size: 1.5rem;
   }
 `;

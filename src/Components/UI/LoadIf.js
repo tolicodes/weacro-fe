@@ -1,6 +1,6 @@
 import React from 'react';
 import Media from 'react-media';
-import { Desktop, Phone_Portrait } from './DeviceRules';
+import { Desktop, PhonePortrait, PhoneLandscape } from './DeviceRules';
 
 export default {
   Desktop: ({ children }) => (
@@ -9,12 +9,12 @@ export default {
     </Media>
   ),
   Portrait: ({ children }) => (
-    <Media query={Phone_Portrait}>
+    <Media query={PhonePortrait}>
       {children}
     </Media>
   ),
   notPortrait: ({ children }) => (
-    <Media query={`not ${Phone_Landscape}`}>
+    <Media query={`not ${PhoneLandscape}`}>
       {children}
     </Media>
   ),

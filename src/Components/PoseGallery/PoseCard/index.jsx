@@ -4,7 +4,7 @@ import LoadIf from '../../UI/LoadIf';
 import PoseText from './PoseParts/Text';
 import PictureArea from './PictureArea';
 import { isClose } from '../helpers';
-import { Phone_Landscape } from '../../UI/DeviceRules';
+import { PhoneLandscape } from '../../UI/DeviceRules';
 
 const Card = styled.div`
 	display: flex;
@@ -19,7 +19,7 @@ const Card = styled.div`
 	text-align: center;
 	height: 90vh;
 
-	@media ${Phone_Landscape}{
+	@media ${PhoneLandscape}{
 		height:100vh;
 		background-color:black;
 	}
