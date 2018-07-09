@@ -1,30 +1,19 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
+import styled from 'styled-components';
 import Credit from './Credits';
-import { Phone_Portrait, Phone_Landscape } from '../../../UI/DeviceRules';
-import styled from 'styled-components'
+import { Phone_Portrait, Phone_Landscape } from '../../DeviceRules';
 
+const team = [{
+  name: 'Yarden Hochman',
+  img:
+    'https://res.cloudinary.com/dz2nxhscn/image/upload/v1518158450/16832212_1326016857444631_3977183095561215084_n_osizmh.jpg',
+  profileSite: 'https://yardenh.herokuapp.com/',
+  text:
+    'Yarden is a Full Stack Engineer currently looking for opportunities in Colorado or California. His favorite fruit is Mango.',
+}];
 
-export default ({history}) => (
-  <About_Page>
-  <Back_Button className="back_button">
-      <Styled_Icon
-        name="reply"
-        size="huge"
-        onClick={() => window.history.back()}
-      />
-    </Back_Button>
-      <TitleArea>
-        <Title>About Us</Title>
-      </TitleArea>
-    <Participants>
-      <Credit person={yarden} />
-      <Credit person={Anatoliy} />
-    </Participants>
-  </About_Page>
-);
-
-const About_Page = styled.div`
+const AboutPage = styled.div`
   display: flex;
   flex-direction: column;
   height: 80vh;
@@ -33,6 +22,7 @@ const About_Page = styled.div`
     height: 100vh;
   }
 `;
+
 const Participants = styled.div`
   padding: 10vw;
   padding-top:0;
@@ -48,7 +38,8 @@ const Participants = styled.div`
     align-items: center;
     justify-content: space-around;
   }
-`
+`;
+
 const Title = styled.h1`
   font-family: Special Elite;
   text-align: center;
@@ -60,29 +51,36 @@ const Title = styled.h1`
     padding-bottom: 0;
   }
 `;
-const Back_Button = styled.div`
+const BackButton = styled.div`
   padding-left: 80vw;
 `;
-const Styled_Icon = styled(Icon)`
+const StyledIcon = styled(Icon)`
   cursor: pointer;
 `;
 const TitleArea = styled.div`
   margin: 10vh 0;
 `;
 
-var yarden = {
-  name: 'Yarden Hochman',
-  img:
-    'https://res.cloudinary.com/dz2nxhscn/image/upload/v1518158450/16832212_1326016857444631_3977183095561215084_n_osizmh.jpg',
-  profileSite: 'https://yardenh.herokuapp.com/',
-  text:
-    'Yarden is a Full Stack Engineer currently looking for opportunities in Colorado or California. His favorite fruit is Mango.',
-};
-var Anatoliy = {
-  name: 'Anatoliy Zaslavskiy',
-  img:
-    'https://res.cloudinary.com/dz2nxhscn/image/upload/v1518127206/20046539_10156211418873265_263186605151505675_n_ah72ly.jpg',
-  profileSite: 'https://www.linkedin.com/in/tolicodes',
-  text:
-    'Toli is a frontend programmer working at Hover Inc in SF, California. He loves everything active including acro yoga, hiking, jogging, skiing, and PsyTrance parties.',
-};
+export default () => (
+  <AboutPage>
+    <BackButton className="back_button">
+      <StyledIcon
+        name="reply"
+        size="huge"
+        onClick={() => window.history.back()}
+      />
+    </BackButton>
+    <TitleArea>
+      <Title>
+        About Us
+      </Title>
+    </TitleArea>
+    <Participants>
+      {
+        team.map(member => (
+          <Credit key={member.name} person={member} />
+        ))
+      }
+    </Participants>
+  </AboutPage>
+);
