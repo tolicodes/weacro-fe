@@ -9,7 +9,7 @@ const PosesFilter = ({
   .filter(pose => checks(single, poseSearch, pose, tag, lists, difficultySetting))
   .map((pose, cardIndex, filteredPoses) => (
     <PoseCard
-      key={cardIndex + pose.name}
+      key={pose.name}
       pose={pose}
       cardIndex={cardIndex}
       filteredPoses={filteredPoses}
@@ -22,7 +22,7 @@ const mapStateToProps = ({
   view: {
     tag, difficulty, currentSlide, name,
   },
-  user: { lists, id },
+  user: { lists },
 }) => ({
   poses, tag, lists, poseSearch: name, difficultySetting: difficulty, currentSlide,
 });
