@@ -1,8 +1,16 @@
 import api from '../../API';
 
-export const checks = (single, pose, filteredView, lists, difficultySetting) => {
+const isFavorite = (poseId, lists) => lists && lists.Favorites && lists.Favorites.indexOf(poseId) !== -1;
+
+
+export const checks = (single, poseToSearch, pose, filteredView, lists, difficultySetting) => {
   if (single) {
     return pose.name.toLowerCase() === single.replace('-', ' ').toLowerCase();
+  }
+  if (poseToSearch) {
+    const target = pose.name.toLowerCase();
+    const aim = poseToSearch.replace('-', ' ').toLowerCase();
+    return target.includes(aim);
   }
   if (filteredView && !isFavorite(pose.id, lists)) {
     return false;
@@ -13,7 +21,6 @@ export const checks = (single, pose, filteredView, lists, difficultySetting) => 
   }
   return false;
 };
-var isFavorite = (poseId, lists) => lists && lists.Favorites && lists.Favorites.indexOf(poseId) !== -1;
 
 export const removeFromFavorites = (poseID, userID, removeFromUserList) => {
   api.list.remove(poseID, userID, 'Favorites');

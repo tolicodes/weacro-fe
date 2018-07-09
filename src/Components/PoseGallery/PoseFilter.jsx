@@ -4,9 +4,9 @@ import PoseCard from './PoseCard';
 import { checks } from './helpers';
 
 const PosesFilter = ({
-  lists, difficultySetting, tag, poses, currentSlide, single,
+  lists, difficultySetting, tag, poses, currentSlide, single, poseSearch,
 }) => poses
-  .filter(pose => checks(single, pose, tag, lists, difficultySetting))
+  .filter(pose => checks(single, poseSearch, pose, tag, lists, difficultySetting))
   .map((pose, cardIndex, filteredPoses) => (
     <PoseCard
       key={cardIndex + pose.name}
@@ -19,10 +19,12 @@ const PosesFilter = ({
   ));
 const mapStateToProps = ({
   pose: { poses },
-  view: { tag, difficulty, currentSlide },
+  view: {
+    tag, difficulty, currentSlide, name,
+  },
   user: { lists, id },
 }) => ({
-  poses, tag, lists, difficultySetting: difficulty, currentSlide,
+  poses, tag, lists, poseSearch: name, difficultySetting: difficulty, currentSlide,
 });
 
 export default connect(mapStateToProps)(PosesFilter);

@@ -2,54 +2,51 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LoadIf from '../../UI/LoadIf';
 import PosePicture from './PoseParts/Picture';
-import Media from 'react-media';
 import Heart from './PoseParts/Heart';
-import { remove_from_user, add_to_user } from '../../../store/actions/actions';
+import { removeFromUser, addToUser } from '../../../store/actions/actions';
 import { removeFromFavorites, addToFavorites } from '../helpers';
 
 const PictureArea = ({
-	img,
-	userName,
-	tag,
-	poseID,
-	lists,
-	removeFromUserList,
-	addToUserList,
-	userID,
+  img,
+  userName,
+  tag,
+  poseID,
+  lists,
+  removeFromUserList,
+  addToUserList,
+  userID,
 }) => (
-	<div className="pose_display_and_actions_box">
-		<PosePicture img={img} />
-		<LoadIf.notPortrait>
-			{!userName && !tag ? (
-				<div />
-			) : (
-				<Heart
-					key={poseID + 'heart'}
-					poseID={poseID}
-					isFavorite={
+  <div className="pose_display_and_actions_box">
+    <PosePicture img={img} />
+    <LoadIf.notPortrait>
+      {!userName && !tag ? (
+        <div />
+      ) : (
+        <Heart
+          key={`${poseID}heart`}
+          poseID={poseID}
+          isFavorite={
 						lists && lists.Favorites && lists.Favorites.indexOf(poseID) !== -1
 					}
-					remove={() => removeFromFavorites(poseID, userID, removeFromUserList)}
-					add={() => addToFavorites(poseID, userID, addToUserList)}
-					userID={userID}
-				/>
-			)}
-		</LoadIf.notPortrait>
-	</div>
+          remove={() => removeFromFavorites(poseID, userID, removeFromUserList)}
+          add={() => addToFavorites(poseID, userID, addToUserList)}
+          userID={userID}
+        />
+      )}
+    </LoadIf.notPortrait>
+  </div>
 );
 
 const mapStateToProps = ({ view: { tag }, user: { name, lists, id } }) => ({
-	userName: name,
-	tag,
-	lists,
-	userID: id,
+  userName: name,
+  tag,
+  lists,
+  userID: id,
 });
 
 const mapDispatchToProps = dispatch => ({
-	addToUserList: (pose_id, listName) =>
-		dispatch(add_to_user(pose_id, listName)),
-	removeFromUserList: (pose_id, listName) =>
-		dispatch(remove_from_user(pose_id, listName)),
+  addToUserList: (pose_id, listName) => dispatch(addToUser(pose_id, listName)),
+  removeFromUserList: (pose_id, listName) => dispatch(removeFromUser(pose_id, listName)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PictureArea);
