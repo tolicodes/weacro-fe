@@ -19,7 +19,7 @@ class PoseLoader extends Component {
 	    return <LoadDisplay />;
 	  }
 	  return (
-			<div>
+  <div>
         {children}
       </div>
 	  );
