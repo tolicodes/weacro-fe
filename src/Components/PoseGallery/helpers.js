@@ -1,6 +1,9 @@
 import api from '../../API';
 
-export const checks = (pose, filteredView, lists, difficultySetting) => {
+export const checks = (single, pose, filteredView, lists, difficultySetting) => {
+  if (single) {
+    return pose.name.toLowerCase() === single.replace('-', ' ').toLowerCase();
+  }
   if (filteredView && !isFavorite(pose.id, lists)) {
     return false;
   }
