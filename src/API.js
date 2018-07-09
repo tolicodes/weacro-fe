@@ -1,4 +1,5 @@
 import axios from 'axios';
+const { REACT_APP_API_URL_BASE } = process.env;
 
 function getOptions() {
   return {
@@ -14,7 +15,7 @@ async function get(url, offline) {
   }
 
   try {
-    const res = await axios.get(url, getOptions());
+    const res = await axios.get(`${REACT_APP_API_URL_BASE}${url}`, getOptions());
     localStorage.setItem(url, JSON.stringify(res.data));
     return res.data;
   } catch (e) {
@@ -25,14 +26,14 @@ async function get(url, offline) {
 async function post(url, data, withoutToken) {
   if (!withoutToken) {
     try {
-      const res = await axios.post(url, data, getOptions());
+      const res = await axios.post(`${REACT_APP_API_URL_BASE}${url}`, data, getOptions());
       return res.data;
     } catch (e) {
       console.log(e);
     }
   } else {
     try {
-      const res = await axios.post(url, data);
+      const res = await axios.post(`${REACT_APP_API_URL_BASE}${url}`, data);
       return res.data;
     } catch (e) {
       console.log(e);
@@ -42,7 +43,7 @@ async function post(url, data, withoutToken) {
 
 async function remove(url) {
   try {
-    const res = await axios.delete(url, getOptions());
+    const res = await axios.delete(`${REACT_APP_API_URL_BASE}${url}`, getOptions());
     return res.data;
   } catch (e) {
     console.log(e);
