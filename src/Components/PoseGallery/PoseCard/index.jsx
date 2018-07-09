@@ -6,9 +6,31 @@ import PictureArea from './PictureArea';
 import { isClose } from '../helpers';
 import { PhoneLandscape } from '../../UI/DeviceRules';
 
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: white;
+  float: left;
+  position: relative;
+  text-align: center;
+  height: 90vh;
+
+  @media ${PhoneLandscape}{
+    height:100vh;
+    background-color:black;
+  }
+`;
+
 export default function PoseCard({
   pose: {
-    img, difficulty, id, name,
+    img,
+    difficulty,
+    id,
+    name,
   },
   difficultySetting,
   filteredPoses,
@@ -35,21 +57,3 @@ export default function PoseCard({
     </Card>
   );
 }
-const Card = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	align-content: center;
-	justify-content: space-evenly;
-	width: 100%;
-	background-color: white;
-	float: left;
-	position: relative;
-	text-align: center;
-	height: 90vh;
-
-	@media ${PhoneLandscape}{
-		height:100vh;
-		background-color:black;
-	}
-`;
