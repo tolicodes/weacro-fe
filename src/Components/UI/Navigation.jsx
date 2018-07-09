@@ -1,30 +1,35 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 
-const Navigation = ({ next, prev }) => (
-  <Control>
-    <Arrow_Button onClick={prev} >
-      <Icon
-        name="chevron left"
-        color="pink"
-        size="huge"
-      />
-    </Arrow_Button>
-    <Arrow_Button onClick={next} >
-      <Icon
-        name="chevron right"
-        color="pink"
-        size="huge"
-      />
-    </Arrow_Button>
-  </Control>
-);
+const Navigation = ({ next, prev, skip }) => {
+  if (skip) {
+    return null;
+  }
+  return (
+    <Control>
+      <ArrowButton onClick={prev}>
+        <Icon
+          name="chevron left"
+          color="pink"
+          size="huge"
+        />
+      </ArrowButton>
+      <ArrowButton onClick={next}>
+        <Icon
+          name="chevron right"
+          color="pink"
+          size="huge"
+        />
+      </ArrowButton>
+    </Control>
+  );
+};
 
 export default Navigation;
 
-const Arrow_Button = styled.a`
+const ArrowButton = styled.a`
   height: 6vh;
   cursor: pointer;
   opacity: 0.3;

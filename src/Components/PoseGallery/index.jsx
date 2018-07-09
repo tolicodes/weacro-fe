@@ -1,47 +1,51 @@
 import React from 'react';
 import Media from 'react-media';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 import Navigation from '../UI/Navigation';
 import SwipeUI from '../UI/SwipeUI';
 import LoadIf from '../UI/LoadIf';
 import PosesFilter from './PoseFilter';
-import { connect } from 'react-redux';
-import {SET_SLIDE_INDEX} from '../../store/actions';
-import styled from 'styled-components';
+import { SET_SLIDE_INDEX } from '../../store/actions';
 
-const PoseGallery = ({ poses, tag, difficulty, setSlide }) => {
+const PoseGallery = ({
+  poses, tag, difficulty, setSlide, match,
+}) => {
   let swipe = null;
   const next = () => swipe.next();
   const prev = () => swipe.prev();
+  const single = match.params ? match.params.singlePose : null;
   return (
     <PoseGalleryArea>
-      <SwipeUI 
+      <SwipeUI
         reactSwipe={reactSwipe => (swipe = reactSwipe)}
         updater={setSlide}
+        skip={single}
       >
-        <PosesFilter />
+        <PosesFilter single={single} />
       </SwipeUI>
       <LoadIf.Desktop>
         <div>
           <Navigation
             next={next}
             prev={prev}
+            skip={single}
           />
         </div>
       </LoadIf.Desktop>
     </PoseGalleryArea>
   );
-}
+};
 const mapStateToProps = ({ pose: { poses }, view: { tag, difficulty } }) => ({ poses, tag, difficulty });
 
 const mapDispatchToProps = dispatch => ({
-    setSlide: currentSlide =>
-      dispatch({
-        type: SET_SLIDE_INDEX,
-        currentSlide,
-      }),
+  setSlide: currentSlide => dispatch({
+    type: SET_SLIDE_INDEX,
+    currentSlide,
+  }),
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(PoseGallery);
+export default connect(mapStateToProps, mapDispatchToProps)(PoseGallery);
 
 const PoseGalleryArea = styled.div`
   height: 92vh;
