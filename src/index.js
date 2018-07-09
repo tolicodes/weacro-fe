@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import {
   combineReducers, createStore, applyMiddleware, compose,
 } from 'redux';
-import { Provider } from 'react-redux';
+
 import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
+import { Provider } from 'react-redux';
 import { connectRouter, routerMiddleware, ConnectedRouter } from 'connected-react-router';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -23,6 +24,7 @@ WebFont.load({
     families: ['Special Elite:300,400,700', 'Roboto Condensed:300,400,700', 'Lato:300,400,700'],
   },
 });
+
 const history = createBrowserHistory();
 const reducer = combineReducers({ view, pose, user });
 const sagaMiddleware = createSagaMiddleware();
@@ -43,17 +45,14 @@ const store = createStore(
 sagaMiddleware.run(saga);
 
 ReactDOM.render(
-  // eslint-disable-next-line
+  /* eslint-disable */
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Router />
     </ConnectedRouter>
   </Provider>,
+  /* eslint-enable */
   document.getElementById('root'),
 );
-
-if (module.hot) {
-  module.hot.accept();
-}
 
 registerServiceWorker();

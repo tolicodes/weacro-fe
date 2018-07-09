@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import {
-  Desktop,
-  PhoneLandscape,
   PhonePortrait,
   Orange,
 } from '../../DeviceRules';

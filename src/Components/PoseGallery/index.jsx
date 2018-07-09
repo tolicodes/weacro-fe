@@ -1,5 +1,4 @@
 import React from 'react';
-import Media from 'react-media';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Navigation from '../UI/Navigation';

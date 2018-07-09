@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Modal, Menu, Icon } from 'semantic-ui-react';
-import Media from 'react-media';
 import RegisterForm from './Register';
 import LoginForm from './Login';
 import LoadIf from '../../../UI/LoadIf';
