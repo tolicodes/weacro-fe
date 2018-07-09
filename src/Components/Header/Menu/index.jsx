@@ -28,8 +28,10 @@ const TagChoice = ({ loggedIn }) => {
   );
 };
 
-const HeaderMenu = ({ userName, difficulty }) => (
-  <Fragment>
+const HeaderMenu = ({ userName, difficulty, match }) => {
+  console.log(match);
+  return (
+    <Fragment>
     <DifficultyMenu difficultySetting={difficulty} />
     <TagChoice loggedIn={userName} />
     <SearchBar />
@@ -38,8 +40,8 @@ const HeaderMenu = ({ userName, difficulty }) => (
       <Options isUser={userName} />
     </Menu.Menu>
   </Fragment>
-);
-
+  );
+};
 const mapStateToProps = ({ view: { difficulty }, user: { name: userName } }) => ({ difficulty, userName });
 const mapDispatchToProps = dispatch => ({
   UserLogout: () => dispatch({
