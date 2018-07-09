@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
     type, difficulty, tag, currentSlide, device, name,
   } = action;
   const {
-    FILTER_DIFFICULTY, SET_TAG, SET_SLIDE_INDEX, SET_VIEW, FILTER_NAME,
+    FILTER_DIFFICULTY, SET_TAG, SET_SLIDE_INDEX, SET_VIEW, FILTER_BY_NAME,
   } = actionTypes;
   let setState;
   switch (type) {
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
     case SET_VIEW:
       setState = { device };
       return updateObject(state, setState);
-    case FILTER_NAME:
+    case FILTER_BY_NAME:
       setState = { name };
       return updateObject(state, setState);
     default:

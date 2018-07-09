@@ -2,15 +2,11 @@ import api from '../../API';
 
 const isFavorite = (poseId, lists) => lists && lists.Favorites && lists.Favorites.indexOf(poseId) !== -1;
 
+const simplify = word => word.toLowerCase().replace('-', ' ');
 
-export const checks = (single, poseToSearch, pose, filteredView, lists, difficultySetting) => {
-  if (single) {
-    return pose.name.toLowerCase() === single.replace('-', ' ').toLowerCase();
-  }
-  if (poseToSearch) {
-    const target = pose.name.toLowerCase();
-    const aim = poseToSearch.replace('-', ' ').toLowerCase();
-    return target.includes(aim);
+export const checks = (singlePose, filterByPoseName, pose, filteredView, lists, difficultySetting) => {
+  if (singlePose || filterByPoseName) {
+    return simplify(pose.name).includes(simplify(filterByPoseName));
   }
   if (filteredView && !isFavorite(pose.id, lists)) {
     return false;

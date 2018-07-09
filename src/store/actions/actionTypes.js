@@ -7,5 +7,5 @@ export const DUMP_POSE = 'DUMP_POSE';
 export const SET_TAG = 'SET_TAG';
 export const SET_SLIDE_INDEX = 'SET_SLIDE_INDEX';
 export const SET_VIEW = 'SET_VIEW';
-export const FILTER_NAME = 'FILTER_NAME';
+export const FILTER_BY_NAME = 'FILTER_BY_NAME';
 export const REFRESH_POSE_DISPLAY = 'REFRESH_POSE_DISPLAY';

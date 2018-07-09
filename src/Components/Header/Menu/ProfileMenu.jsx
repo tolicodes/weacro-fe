@@ -1,10 +1,11 @@
 import React from 'react';
-import Popup from './Popup';
 import { connect } from 'react-redux';
-import {LOG_OUT} from '../../../store/actions';
 import { Menu, Icon } from 'semantic-ui-react';
+import Popup from './Popup';
+import { LOG_OUT } from '../../../store/actions';
 
 const ProfileMenu = ({ userName, UserLogout }) => {
+  if (!userName) return null;
   const logOut = () => {
     localStorage.removeItem('token');
     UserLogout();
@@ -28,10 +29,9 @@ const ProfileMenu = ({ userName, UserLogout }) => {
 
 const mapStateToProps = ({ user: { name } }) => ({ userName: name });
 const mapDispatchToProps = dispatch => ({
-  UserLogout: () =>
-    dispatch({
-      type: LOG_OUT,
-    }),
+  UserLogout: () => dispatch({
+    type: LOG_OUT,
+  }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileMenu);

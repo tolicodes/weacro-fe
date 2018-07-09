@@ -1,5 +1,5 @@
 import {
-  FILL_USER, STORE_POSE, COLLECT_POSE, DUMP_POSE, FILTER_DIFFICULTY, SET_TAG, FILTER_NAME,
+  FILL_USER, STORE_POSE, COLLECT_POSE, DUMP_POSE, FILTER_DIFFICULTY, SET_TAG, FILTER_BY_NAME,
 } from './actionTypes';
 
 export const storeUser = user => ({ type: FILL_USER, user });
@@ -14,7 +14,7 @@ export const setDifficulty = (difficulty, currentSlide) => ({
   currentSlide,
 });
 export const filterByName = name => ({
-  type: FILTER_NAME,
+  type: FILTER_BY_NAME,
   name,
 });
 export const setTag = (tag, currentSlide) => ({
