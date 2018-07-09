@@ -11,25 +11,19 @@ import {
 
 const Credit = styled.div`
   display: flex;
-
-  padding: 10px;
+  padding-bottom: 10px;
+  align-items: flex-start;
+  @media ${PhonePortrait} {
+    flex-direction: column
+  }
 `;
 
 const Image = styled.img`
-  @media ${Desktop} {
-    height: 100%;
-    width: 100px;
-    border-radius: 5px;
-  }
-  @media ${PhonePortrait}{
-    width: 40vw;
-    height: auto;
-    margin-top: 5vh;
-  }
-  @media ${PhoneLandscape}{
-    height: 100%;
-    width: 158px;
-  }
+  height: auto;
+  border-radius: 5px;
+  flex: 1;  
+  max-width: 100%;
+
 `;
 
 const TextBox = styled.div`
@@ -37,6 +31,7 @@ const TextBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 0 10px;
+  flex: 5;
 `;
 
 const CreditText = styled.p`

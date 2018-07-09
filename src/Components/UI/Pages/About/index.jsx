@@ -59,18 +59,20 @@ const Title = styled.h1`
   }
 `;
 const BackButton = styled.div`
-  padding-left: 80vw;
 `;
 const StyledIcon = styled(Icon)`
   cursor: pointer;
 `;
 const TitleArea = styled.div`
   margin: 10vh 0;
+  @media ${PhonePortrait}{
+    display: none;
+  }
 `;
 
 export default () => (
   <AboutPage>
-    <BackButton className="back_button">
+    <BackButton>
       <StyledIcon
         name="reply"
         size="huge"
