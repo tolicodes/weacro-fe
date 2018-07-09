@@ -27,7 +27,7 @@ const Card = styled.div`
 
 export default function PoseCard({
   pose: {
-    img, difficulty, id, name,
+    img, difficulty, id, name, type,
   },
   difficultySetting,
   filteredPoses,
@@ -40,7 +40,7 @@ export default function PoseCard({
         <div />
       ) : (
         <Fragment>
-          <PictureArea img={img} poseID={id} />
+          <PictureArea img={img} type={type} poseID={id} />
           <LoadIf.notPortrait>
             <PoseText
               poseTitle={name}
