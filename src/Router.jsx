@@ -7,8 +7,7 @@ import PoseLoader from './PoseLoader';
 import PoseGallery from './Components/PoseGallery';
 
 
-export default function App() {
-  return (
+export default () => (
     <Router>
       <PageLayout>
         <Switch>
@@ -27,4 +26,3 @@ export default function App() {
       </PageLayout>
     </Router>
   );
-}

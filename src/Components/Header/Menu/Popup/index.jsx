@@ -3,7 +3,7 @@ import { Button, Modal, Menu, Icon } from 'semantic-ui-react';
 import Media from 'react-media';
 import RegisterForm from './Register';
 import LoginForm from './Login';
-import { Desktop, Phone_Portrait } from '../../../../DeviceRules';
+import LoadIf from '../../../UI/LoadIf';
 
 class Popup extends Component {
   state = { form: 'register' };
@@ -14,7 +14,7 @@ class Popup extends Component {
   };
   render = () => (
     <React.Fragment>
-      <Media query={Desktop}>
+      <LoadIf.Desktop>
         <Modal
           style={popupStyle}
           className="Popup"
@@ -29,8 +29,8 @@ class Popup extends Component {
             <RegisterForm login={this.changeForm} />
           )}
         </Modal>
-      </Media>
-      <Media query={Phone_Portrait}>
+      </LoadIf.Desktop>
+      <LoadIf.Portrait>
         <Modal
           style={popupStyle}
           className="Popup"
@@ -51,7 +51,7 @@ class Popup extends Component {
             <RegisterForm login={this.changeForm} />
           )}
         </Modal>
-      </Media>
+      </LoadIf.Portrait>
     </React.Fragment>
   );
 }

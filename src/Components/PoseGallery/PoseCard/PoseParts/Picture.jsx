@@ -4,7 +4,7 @@ import {
 	Desktop,
 	Phone_Portrait,
 	Phone_Landscape,
-} from '../../../../DeviceRules';
+} from '../../../UI/DeviceRules';
 import styled from 'styled-components'
 
 const PosePicture = ({ img }) => (

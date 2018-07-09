@@ -1,11 +1,11 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import Credit from './Credits';
-import { Phone_Portrait, Phone_Landscape } from '../../../../DeviceRules';
+import { Phone_Portrait, Phone_Landscape } from '../../../UI/DeviceRules';
 import styled from 'styled-components'
 
 
-const AboutUs = ({history}) => (
+export default ({history}) => (
   <About_Page>
   <Back_Button className="back_button">
       <Styled_Icon
@@ -23,9 +23,6 @@ const AboutUs = ({history}) => (
     </Participants>
   </About_Page>
 );
-
-
-export default AboutUs;
 
 const About_Page = styled.div`
   display: flex;

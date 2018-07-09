@@ -2,7 +2,7 @@ import React from 'react';
 import Media from 'react-media';
 import Navigation from '../UI/Navigation';
 import SwipeUI from '../UI/SwipeUI';
-import { Desktop } from '../../DeviceRules';
+import LoadIf from '../UI/LoadIf';
 import PosesFilter from './PoseFilter';
 import { connect } from 'react-redux';
 import {SET_SLIDE_INDEX} from '../../store/actions';
@@ -21,14 +21,14 @@ const PoseGallery = ({ poses, tag, difficulty, setSlide }) => {
       >
         <PosesFilter />
       </SwipeUI>
-      <Media query={`${Desktop}`}>
+      <LoadIf.Desktop>
         <div>
           <Navigation
             next={next}
             prev={prev}
           />
         </div>
-      </Media>
+      </LoadIf.Desktop>
     </PoseGalleryArea>
   );
 }

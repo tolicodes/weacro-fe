@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Phone_Landscape } from '../../../DeviceRules';
+import LoadIf from '../../UI/LoadIf';
 import PosePicture from './PoseParts/Picture';
 import Media from 'react-media';
 import Heart from './PoseParts/Heart';
@@ -19,7 +19,7 @@ const PictureArea = ({
 }) => (
 	<div className="pose_display_and_actions_box">
 		<PosePicture img={img} />
-		<Media query={`not ${Phone_Landscape}`}>
+		<LoadIf.notPortrait>
 			{!userName && !tag ? (
 				<div />
 			) : (
@@ -34,7 +34,7 @@ const PictureArea = ({
 					userID={userID}
 				/>
 			)}
-		</Media>
+		</LoadIf.notPortrait>
 	</div>
 );
 

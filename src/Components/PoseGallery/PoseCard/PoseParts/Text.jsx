@@ -1,9 +1,9 @@
 import React from 'react';
-import { Desktop, Phone_Portrait } from '../../../../DeviceRules';
+import { Desktop, Phone_Portrait } from '../../../UI/DeviceRules';
 import styled from 'styled-components'
 
 
-const PoseText = ({ poseTitle, subtitle }) => (
+export default ({ poseTitle, subtitle }) => (
 		<Details>
 			<TextArea>
 				<Title>{poseTitle}</Title>
@@ -12,7 +12,6 @@ const PoseText = ({ poseTitle, subtitle }) => (
 		</Details>
 );
 
-export default PoseText;
 
 const Details = styled.div`
   width: 100%;

@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components'
 import Media from 'react-media';
-import { Phone_Landscape } from '../../../DeviceRules';
+import LoadIf from '../../../Components/UI/LoadIf';
 import PoseText from './PoseParts/Text';
 import PictureArea from './PictureArea';
 import { isClose } from '../helpers';
 
-const PoseCard = ({
+export default function PoseCard({
 	pose: { img, difficulty, id, name },
 	difficultySetting,
 	filteredPoses,
 	currentSlide,
 	cardIndex,
-}) => {
+}){
 	return (
 		<Card key={img}>
 			{!isClose(2, filteredPoses, cardIndex, currentSlide) ? (
@@ -20,21 +20,19 @@ const PoseCard = ({
 			) : (
 				<Fragment>
 					<PictureArea img={img} poseID={id} />
-					<Media query={`not ${Phone_Landscape}`}>
+					<LoadIf.notPortrait>
 						<PoseText
 							poseTitle={name}
 							subtitle={`${
 								difficultySetting === 'All' ? `Difficulty: ${difficulty}` : ''
 							}`}
 						/>
-					</Media>
+					</LoadIf.notPortrait>
 				</Fragment>
 			)}
 		</Card>
 	);
 };
-
-export default PoseCard;
 
 const Card = styled.div`
 	display: flex;

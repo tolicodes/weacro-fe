@@ -5,7 +5,7 @@ import {
   Phone_Landscape,
   Phone_Portrait,
   Orange,
-} from '../../../../DeviceRules';
+} from '../../../UI/DeviceRules';
 
 export default ({ person: { name, img, text, profileSite } }) => (
   <Credit>
