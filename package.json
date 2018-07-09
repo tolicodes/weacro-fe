@@ -1,5 +1,5 @@
 {
-  "name": "acroyoga",
+  "name": "weacro-fe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -36,7 +36,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://findpose.herokuapp.com/",
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-plugin-import": "^2.12.0",
