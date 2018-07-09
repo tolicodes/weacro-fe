@@ -1,18 +1,14 @@
-export const updateObject = (oldObject, updatedProperties) => {
-  return {
-    ...oldObject,
+export const updateObject = (oldObject, updatedProperties) => ({
+  ...oldObject,
+  ...updatedProperties,
+});
+export const updateList = (oldObject, oldListInObject, updatedProperties) => ({
+  ...oldObject,
+  lists: {
+    ...oldListInObject,
     ...updatedProperties,
-  };
-};
-export const updateList = (oldObject, oldListInObject, updatedProperties) => {
-  return {
-    ...oldObject,
-    lists: {
-      ...oldListInObject,
-      ...updatedProperties,
-    },
-  };
-};
+  },
+});
 
 export const addToInnerList = (existingInnerList, innerList, newItem) => {
   const outerList = {};

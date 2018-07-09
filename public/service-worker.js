@@ -1,32 +1,30 @@
-var doCache = true;
+const doCache = true;
 
-var CACHE_NAME = 'my-pwa-cache-v1';
+const CACHE_NAME = 'my-pwa-cache-v1';
 
-self.addEventListener('activate', event => {
+self.addEventListener('activate', (event) => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then(keyList =>
-      Promise.all(
-        keyList.map(key => {
-          if (!cacheWhitelist.includes(key)) {
-            console.log('Deleting cache: ' + key);
-            return caches.delete(key);
-          }
-        }),
-      ),
-    ),
+    caches.keys().then(keyList => Promise.all(
+      keyList.map((key) => {
+        if (!cacheWhitelist.includes(key)) {
+          console.log(`Deleting cache: ${key}`);
+          return caches.delete(key);
+        }
+      }),
+    )),
   );
 });
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', (event) => {
   if (doCache) {
     event.waitUntil(
-      caches.open(CACHE_NAME).then(function(cache) {
+      caches.open(CACHE_NAME).then((cache) => {
         fetch('manifest.json')
-          .then(response => {
+          .then((response) => {
             response.json();
           })
-          .then(assets => {
+          .then((assets) => {
             const urlsToCache = ['/', assets['main.js']];
             cache.addAll(urlsToCache);
             console.log('cached');
@@ -36,12 +34,10 @@ self.addEventListener('install', function(event) {
   }
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', (event) => {
   if (doCache) {
     event.respondWith(
-      caches.match(event.request).then(function(response) {
-        return response || fetch(event.request);
-      }),
+      caches.match(event.request).then(response => response || fetch(event.request)),
     );
   }
 });

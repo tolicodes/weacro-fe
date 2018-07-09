@@ -26,6 +26,7 @@ const AboutPage = styled.div`
 const Participants = styled.div`
   padding: 10vw;
   padding-top:0;
+  
   @media ${Phone_Portrait}{
     padding: 0 3px;
     height: 70vh;

@@ -1,18 +1,24 @@
 import * as actionTypes from '../actions';
-import { updateObject, updateList, addToInnerList, makeNewList } from '../utility';
+import {
+  updateObject, updateList, addToInnerList, makeNewList,
+} from '../utility';
 
 const initialState = {
   id: null,
   name: null,
   email: null,
-  difficulty: "0",
-  lists: {}
+  difficulty: '0',
+  lists: {},
 };
 const reducer = (state = initialState, action) => {
   let setState;
   let listOfTags = {};
-  const { user, listName, pose_id, type } = action;
-  const { FILL_USER, LOG_OUT, COLLECT_POSE, DUMP_POSE } = actionTypes;
+  const {
+    user, listName, pose_id, type,
+  } = action;
+  const {
+    FILL_USER, LOG_OUT, COLLECT_POSE, DUMP_POSE,
+  } = actionTypes;
 
   switch (type) {
     case FILL_USER:

@@ -45,14 +45,14 @@ chrome-user-data
 .vscode
 *.swp
 .DS_STORE
-node_modules
+build
+public
 scripts/flow/*/.flowconfig
 *~
 *.pyc
 .grunt
 _SpecRunner.html
 __benchmarks__
-build/
 remote-repo/
 coverage/
 flow-coverage/
@@ -69,4 +69,3 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
-build
