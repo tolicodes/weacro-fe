@@ -9,7 +9,7 @@ import PosesFilter from './PoseFilter';
 import { SET_SLIDE_INDEX } from '../../store/actions';
 
 const PoseGallery = ({
-  poses, tag, difficulty, setSlide, match,
+  poses, tag, difficulty, setSlide, match, filterToPoseName,
 }) => {
   let swipe = null;
   const next = () => swipe.next();
@@ -29,14 +29,16 @@ const PoseGallery = ({
           <Navigation
             next={next}
             prev={prev}
-            skip={single}
+            skip={single || filterToPoseName}
           />
         </div>
       </LoadIf.Desktop>
     </PoseGalleryArea>
   );
 };
-const mapStateToProps = ({ pose: { poses }, view: { tag, difficulty } }) => ({ poses, tag, difficulty });
+const mapStateToProps = ({ pose: { poses }, view: { tag, difficulty, name: filterToPoseName } }) => ({
+  poses, tag, difficulty, filterToPoseName,
+});
 
 const mapDispatchToProps = dispatch => ({
   setSlide: currentSlide => dispatch({

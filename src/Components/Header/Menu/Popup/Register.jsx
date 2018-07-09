@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Message, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import {add_to_user}  from '../../../../store/actions/actions';
+import {addToUser}  from '../../../../store/actions/actions';
 import api from '../../../../API';
 import styler from 'react-styling';
 
@@ -172,7 +172,7 @@ class RegisterForm extends Component {
   };
 }
 const mapStateToProps = ({ user: { name: userName } }) => ({ userName });
-const mapDispatchToProps = dispatch => ({ UserLogin: user => dispatch(add_to_user(user)) });
+const mapDispatchToProps = dispatch => ({ UserLogin: user => dispatch(addToUser(user)) });
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
 
 var style = styler`

@@ -6,14 +6,15 @@ const initialState = {
   tag: '',
   currentSlide: 0,
   device: 'Portrait',
+  name: '',
 };
 
 const reducer = (state = initialState, action) => {
   const {
-    type, difficulty, tag, currentSlide, device,
+    type, difficulty, tag, currentSlide, device, name,
   } = action;
   const {
-    FILTER_DIFFICULTY, SET_TAG, SET_SLIDE_INDEX, SET_VIEW,
+    FILTER_DIFFICULTY, SET_TAG, SET_SLIDE_INDEX, SET_VIEW, FILTER_NAME,
   } = actionTypes;
   let setState;
   switch (type) {
@@ -28,6 +29,9 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, setState);
     case SET_VIEW:
       setState = { device };
+      return updateObject(state, setState);
+    case FILTER_NAME:
+      setState = { name };
       return updateObject(state, setState);
     default:
   }
