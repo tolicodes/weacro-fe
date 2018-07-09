@@ -9,7 +9,6 @@ import LoadDisplay from './Components/UI/Loader';
 import PoseGallery from './Components/PoseGallery';
 
 const fetchData = async (UserLogin, StorePoses) => {
-  console.log;
   try {
     UserLogin(await api.user.get(true));
     StorePoses(await api.poses.get(true));
