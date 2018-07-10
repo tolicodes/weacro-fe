@@ -6,22 +6,20 @@ import AboutUs from './Components/UI/Pages/About';
 import PoseLoader from './PoseLoader';
 
 export default () => (
-  <Router>
-    <PageLayout>
-      <Switch>
-        <Route
-          exact
-          path="/"
-          component={PoseLoader}
-        />
-        <Route
-          exact
-          path="/pose/:singlePose?"
-          component={PoseLoader}
-        />
-        <Route path="/about" component={AboutUs} />
-        <Route component={NotFound} />
-      </Switch>
-    </PageLayout>
-  </Router>
+  <PageLayout>
+    <Switch>
+      <Route
+        exact
+        path="/"
+        component={PoseLoader}
+      />
+      <Route
+        exact
+        path="/pose/:singlePose?"
+        component={PoseLoader}
+      />
+      <Route path="/about" component={AboutUs} />
+      <Route component={NotFound} />
+    </Switch>
+  </PageLayout>
 );

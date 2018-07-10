@@ -12,5 +12,16 @@
         "mainFile": "src/saga.js",
         "origin": "AUTHORED"
     },
+    "tolicodes.weacro/common/api@0.0.1": {
+        "files": [
+            {
+                "relativePath": "src/API.js",
+                "test": false,
+                "name": "API.js"
+            }
+        ],
+        "mainFile": "src/API.js",
+        "origin": "AUTHORED"
+    },
     "version": "13.0.1"
 }
