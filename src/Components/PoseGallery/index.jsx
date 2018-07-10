@@ -21,7 +21,7 @@ const PoseGallery = ({
         updater={setSlide}
         skip={single}
       >
-        <PosesFilter single={single} />
+        <PosesFilter />
       </SwipeUI>
       <LoadIf.Desktop>
         <div>

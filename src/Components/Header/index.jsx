@@ -6,17 +6,17 @@ import { Header } from './styled';
 
 
 const HeaderComponent = ({ pathname }) => {
-  console.log(pathname);
+  const isAboutPath = pathname.includes('about');
   return (
     <header>
       <LoadIf.Desktop>
         <Header>
-          <HeaderMenu />
+          <HeaderMenu isAboutPath={isAboutPath} />
         </Header>
       </LoadIf.Desktop>
       <LoadIf.Portrait>
         <Header borderless>
-          <HeaderMenu />
+          <HeaderMenu isAboutPath={isAboutPath} />
         </Header>
       </LoadIf.Portrait>
     </header>
