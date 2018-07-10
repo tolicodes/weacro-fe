@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PageLayout from './Components/UI/Pages/PageLayout';
 import NotFound from './Components/UI/Pages/NotFound';
 import AboutUs from './Components/UI/Pages/About';
