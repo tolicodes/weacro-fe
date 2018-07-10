@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { filterByName } from '../../../store/actions/actions';
+import { filterByName } from '../../store/actions/actions';
 import { Icon, Menu } from 'semantic-ui-react';
 import styled from 'styled-components';
 

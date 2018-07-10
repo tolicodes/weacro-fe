@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RegisterForm from './Register';
 import LoginForm from './Login';
-import LoadIf from '../../../UI/LoadIf';
+import LoadIf from '../../UI/LoadIf';
 import { PopupModal, StyledLoginButton, LoginIcon, MenuItem } from './style'
 class Popup extends Component {
   state = { form: 'register' };

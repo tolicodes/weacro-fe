@@ -1,10 +1,13 @@
 import React from 'react';
-import Header from '../../Header';
+import Nav from '../../Nav';
+import ResponsiveHeader from './ResponsiveHeader';
 
 function PageLayout({ children }) {
   return (
     <div>
-      <Header />
+      <ResponsiveHeader>
+        <Nav />
+      </ResponsiveHeader>
       {children}
     </div>
   );

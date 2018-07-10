@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import { Orange } from '../../../UI/DeviceRules';
+import { Orange } from '../../UI/DeviceRules';
 
 export const HomeIcon = styled(Icon).attrs({
   name: 'home',

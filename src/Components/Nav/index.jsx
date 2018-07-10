@@ -1,15 +1,16 @@
 import React, { Fragment } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { LOG_OUT } from '../../../store/actions';
+import { LOG_OUT } from '../../store/actions';
 import DifficultyMenu from './Difficulty';
 import Options from './OptionsMenu/OptionsMenu';
 import ProfileMenu from './ProfileMenu';
 import SearchBar from './SearchBar';
 import TagChoice from './TagChoice';
-import BackButton from '../../UI/BackButton';
+import BackButton from '../UI/BackButton';
 
-function HeaderMenu({ userName, difficulty, isAboutPath }) {
+
+function Nav({ userName, difficulty, isAboutPath }) {
   const LeftMenu = () => {
     if (isAboutPath) {
       return (
@@ -43,4 +44,4 @@ const mapDispatchToProps = dispatch => ({
   }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
