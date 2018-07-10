@@ -5,13 +5,12 @@ import Popup from './Popup';
 import { LOG_OUT } from '../../store/actions';
 
 const ProfileMenu = ({ userName, UserLogout }) => {
-  if (!userName) return null;
   const logOut = () => {
     localStorage.removeItem('token');
     UserLogout();
   };
   if (!userName) {
-    return <Popup userName={userName} />;
+    return <Popup />;
   }
   return (
     <Menu.Item

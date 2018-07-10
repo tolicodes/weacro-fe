@@ -21,7 +21,7 @@ class LoginForm extends Component {
     }
   };
   render = () => (
-    <div className="login-form">
+    <div>
         <Grid textAlign="center" style={{ height: '100%' }} verticalAlign="middle">
           <Grid.Column style={{ maxWidth: 450 }}>
             <Form size="large" onSubmit={this.formSubmit} warning>

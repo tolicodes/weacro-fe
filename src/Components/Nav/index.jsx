@@ -7,13 +7,28 @@ import Options from './OptionsMenu/OptionsMenu';
 import ProfileMenu from './ProfileMenu';
 import SearchBar from './SearchBar';
 import TagChoice from './TagChoice';
+import BackButton from '../UI/BackButton';
 
-function Nav({ userName, difficulty }) {
+
+function Nav({ userName, difficulty, isAboutPath }) {
+  const LeftMenu = () => {
+    if (isAboutPath) {
+      return (
+        <div style={{ width: '20%' }}>
+          <BackButton />
+        </div>
+      );
+    } return (
+      <Fragment>
+        <DifficultyMenu difficultySetting={difficulty} />
+        <TagChoice loggedIn={userName} />
+        <SearchBar />
+      </Fragment>
+    );
+  };
   return (
     <Fragment>
-      <DifficultyMenu difficultySetting={difficulty} />
-      <TagChoice loggedIn={userName} />
-      <SearchBar />
+      <LeftMenu />
       <Menu.Menu position="right">
         <ProfileMenu />
         <Options isUser={userName} />

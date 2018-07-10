@@ -11,7 +11,7 @@ function Options({ isUser }) {
     <Fragment>
       <Dropdown
         item
-        icon={<UserIcon isUser={isUser} />}
+        icon={isUser ? <UserIcon isUser /> : <UserIcon />}
       >
         <Dropdown.Menu>
           <Route render={HomeButton} />
@@ -23,8 +23,12 @@ function Options({ isUser }) {
   );
 }
 
+Options.defaultProps = {
+  isUser: false,
+};
+
 Options.propTypes = {
-  isUser: PropTypes.string.isRequired,
+  isUser: PropTypes.string,
 };
 
 export default Options;
