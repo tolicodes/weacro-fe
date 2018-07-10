@@ -2,7 +2,7 @@ import React from 'react';
 import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
-import { setTag } from '../../../../store/actions/actions';
+import { setTag } from '../../../store/actions/actions';
 
 const TagList = ({ tag, userLists, setTag }) => {
   const showFavorites = () => setTag('favorites', 0);

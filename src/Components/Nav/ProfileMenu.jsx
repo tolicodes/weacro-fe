@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Menu, Icon } from 'semantic-ui-react';
 import Popup from './Popup';
-import { LOG_OUT } from '../../../store/actions';
+import { LOG_OUT } from '../../store/actions';
 
 const ProfileMenu = ({ userName, UserLogout }) => {
   if (!userName) return null;

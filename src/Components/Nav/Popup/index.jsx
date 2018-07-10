@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal, Menu, Icon } from 'semantic-ui-react';
 import RegisterForm from './Register';
 import LoginForm from './Login';
-import LoadIf from '../../../UI/LoadIf';
+import LoadIf from '../../UI/LoadIf';
 
 class Popup extends Component {
   state = { form: 'register' };

@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { LOG_OUT } from '../../../store/actions';
+import { LOG_OUT } from '../../store/actions';
 import DifficultyMenu from './Difficulty';
 import Options from './OptionsMenu/OptionsMenu';
 import ProfileMenu from './ProfileMenu';
 import SearchBar from './SearchBar';
 import TagChoice from './TagChoice';
 
-function HeaderMenu({ userName, difficulty }) {
+function Nav({ userName, difficulty }) {
   return (
     <Fragment>
       <DifficultyMenu difficultySetting={difficulty} />
@@ -29,4 +29,4 @@ const mapDispatchToProps = dispatch => ({
   }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

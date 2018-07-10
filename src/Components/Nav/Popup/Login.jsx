@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Message, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import {storeUser}  from '../../../../store/actions/actions';
-import api from '../../../../API';
+import {storeUser}  from '../../../store/actions/actions';
+import api from '../../../API';
 import styler from 'react-styling';
 
 class LoginForm extends Component {

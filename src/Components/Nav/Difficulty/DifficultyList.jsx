@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react';
-import { setDifficulty } from '../../../../store/actions/actions';
+import { setDifficulty } from '../../../store/actions/actions';
 
 const DifficultyList = ({ difficultySetting, setDifficulty }) => {
   const difficulties = ['All', 'Easy', 'Intermediate', 'Hard', 'Expert'];
