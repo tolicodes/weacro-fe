@@ -10,8 +10,8 @@ import PoseGallery from './Components/PoseGallery';
 
 const fetchData = async (UserLogin, StorePoses) => {
   try {
-    UserLogin(await api.user.get(true));
-    StorePoses(await api.poses.get(true));
+    UserLogin(await api.user.get(false));
+    StorePoses(await api.poses.get(false));
   } catch (e) {
     console.error(e);
   }
