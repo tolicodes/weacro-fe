@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ProfileMenu from '../ProfileMenu';
 import { UserIcon } from './styled';
 import { HomeButton, AboutUs } from './Buttons';
+import Popup from '../Popup';
 
 function Options({ isUser }) {
   return (
@@ -16,7 +17,7 @@ function Options({ isUser }) {
         <Dropdown.Menu>
           <Route render={HomeButton} />
           <Route render={AboutUs} />
-          <ProfileMenu />
+          {isUser && <Popup />}
         </Dropdown.Menu>
       </Dropdown>
     </Fragment>
