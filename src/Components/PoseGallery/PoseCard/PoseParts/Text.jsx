@@ -15,38 +15,24 @@ export default ({ poseTitle, subtitle }) => (
 
 const Details = styled.div`
   width: 100%;
-
-  @media ${PhonePortrait}{
-    display: grid;
-    grid-template-columns: 5vw auto 5vw;
-    grid-template-rows: 20% auto;
-    grid-template-area: 'heart | text | .|''.|text|.';
-  }
-`;
-const TextArea = styled.div`
-  grid-area: textArea;
-  grid-row: 2;
-  grid-column: 2;
-`;
+  `;
+const TextArea = styled.div``;
 const Title = styled.h1`
-  grid-area: title;
+  margin-right: 45px;
   font-family: Special Elite;
 
-  @media ${PhonePortrait}{
-    height: 8vh;
-  }
   @media ${Desktop}{
     margin-top: 2vh;
   }
 `;
 const Subtitle = styled.p`
+  margin-right: 45px;
   font-family: Roboto Condensed;
-    grid-area: sub;
-    @media ${PhonePortrait}{
-      color: black;
-      margin-top: 1vh;
-    }
-    @media ${Desktop}{
-      font-size: 2vh;
-    }
+  @media ${PhonePortrait}{
+    color: black;
+    margin-top: 1vh;
+  }
+  @media ${Desktop}{
+    font-size: 2vh;
+  }
 `;

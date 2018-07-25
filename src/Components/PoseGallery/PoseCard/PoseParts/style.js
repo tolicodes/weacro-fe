@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Modal } from 'semantic-ui-react';
 import {
   Desktop,
   PhonePortrait,
   PhoneLandscape,
 } from '../../../UI/DeviceRules';
+
+const heartStyle = {fontSize:'3em', display: 'flex', width: '45px',height:'45', cursor: 'pointer', alignItems: 'center'};
 
 
 export const Img = styled.img`
@@ -34,10 +36,19 @@ export const HeartArea = styled.div`
 	height: 70px;
 	padding-left: 10px;
 `;
-export const HeartState = styled(Icon.Group)`
+export const HeartIcon = styled(Icon).attrs({
+    style: heartStyle,
+    color: 'red'
+})`
 	display: flex;
 	width: 45px;
 	height: 45px;
 	cursor: pointer;
 	font-size: 3em;
 `;
+export const PopupModal = styled(Modal).attrs({
+    size: 'mini'
+  })`
+    height: 350px;
+    padding: 20px;
+  `;

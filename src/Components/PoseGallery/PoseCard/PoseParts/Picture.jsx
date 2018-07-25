@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import LoadDisplay from '../../../UI/Loader';
 import { Img } from './style';
 
-const PosePicture = ({ img }) => (
-  <Img
-    src={img}
-    alt="Loading..."
-    loader={LoadDisplay}
-  />
-);
+function PosePicture({ img }){
+  return (
+    <Img
+      src={img}
+      alt="Loading..."
+      loader={LoadDisplay}
+    />
+  );
+}
+
 PosePicture.propTypes = {
   img: PropTypes.string.isRequired,
 };

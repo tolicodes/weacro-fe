@@ -5,6 +5,8 @@ import PosePicture from './PoseParts/Picture';
 import Heart from './PoseParts/Heart';
 import { removeFromUser, addToUser } from '../../../store/actions/actions';
 import { removeFromFavorites, addToFavorites } from '../helpers';
+import PoseText from './PoseParts/Text';
+import { Details } from './style';
 
 
 const PictureArea = ({
@@ -16,10 +18,13 @@ const PictureArea = ({
   removeFromUserList,
   addToUserList,
   userID,
+  name,
+  subtitle
 }) => (
-  <div className="pose_display_and_actions_box">
+  <React.Fragment>
     <PosePicture img={img} />
     <LoadIf.notPortrait>
+      <Details>
       {!userName && !tag ? (
         
         <Heart
@@ -41,8 +46,10 @@ const PictureArea = ({
           userID={userID}
         />
       )}
+        <PoseText poseTitle={name} subtitle={subtitle} />
+      </Details>
     </LoadIf.notPortrait>
-  </div>
+  </React.Fragment>
 );
 
 const mapStateToProps = ({ view: { tag }, user: { name, lists, id } }) => ({

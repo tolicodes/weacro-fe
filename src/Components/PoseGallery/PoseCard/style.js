@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PhoneLandscape } from '../../UI/DeviceRules';
+import { PhoneLandscape, PhonePortrait } from '../../UI/DeviceRules';
 
 
 export const Card = styled.div`
@@ -19,4 +19,9 @@ height: 90vh;
   height:100vh;
   background-color:black;
 }
+`;
+
+export const Details = styled.div`
+  display: flex;
+  padding-top: 10px;
 `;
