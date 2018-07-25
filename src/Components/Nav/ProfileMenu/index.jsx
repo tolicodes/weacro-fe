@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Menu, Icon } from 'semantic-ui-react';
-import Popup from './Popup';
-import { LOG_OUT } from '../../store/actions';
+import Popup from '../Popup';
+import { LOG_OUT } from '../../../store/actions/actionTypes';
+import { SignOutIcon, MenuItem } from './style';
 
 const ProfileMenu = ({ userName, UserLogout }) => {
   const logOut = () => {
@@ -13,16 +13,10 @@ const ProfileMenu = ({ userName, UserLogout }) => {
     return <Popup />;
   }
   return (
-    <Menu.Item
-      onClick={logOut}
-    >
-      <Icon
-        name="sign out"
-        size="big"
-        color="red"
-      />
+    <MenuItem onClick={logOut} >
+      <SignOutIcon />
       {userName}
-    </Menu.Item>
+    </MenuItem>
   );
 };
 

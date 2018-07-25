@@ -17,17 +17,14 @@ const fetchData = async (UserLogin, StorePoses) => {
   }
 };
 class PoseLoader extends Component {
-  componentDidMount() {
-    const { UserLogin, StorePoses } = this.props;
-    fetchData(UserLogin, StorePoses);
+  posesLoaded = () => (this.props.poses && this.props.poses.length) ? true : false;
+  componentDidMount = () => {
+    if (this.posesLoaded()) return;
+    fetchData(this.props.UserLogin, this.props.StorePoses);
   }
-
-  render() {
-    const { poses, match } = this.props;
-    if (!poses || !poses.length) {
-      return <LoadDisplay />;
-    }
-    return <PoseGallery match={match} />;
+  render = () =>  {
+    if (!this.posesLoaded()) return <LoadDisplay />;
+    return <PoseGallery match={this.props.match} />;
   }
 }
 

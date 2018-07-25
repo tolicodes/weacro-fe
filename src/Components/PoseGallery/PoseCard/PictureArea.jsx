@@ -6,6 +6,7 @@ import Heart from './PoseParts/Heart';
 import { removeFromUser, addToUser } from '../../../store/actions/actions';
 import { removeFromFavorites, addToFavorites } from '../helpers';
 
+
 const PictureArea = ({
   img,
   userName,
@@ -20,7 +21,14 @@ const PictureArea = ({
     <PosePicture img={img} />
     <LoadIf.notPortrait>
       {!userName && !tag ? (
-        <div />
+        
+        <Heart
+          key={`${poseID}heart`}
+          poseID={poseID}
+          isFavorite={false}
+          isGuest={true}
+          userID={userID}
+        />
       ) : (
         <Heart
           key={`${poseID}heart`}

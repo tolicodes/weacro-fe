@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown,Icon } from 'semantic-ui-react';
+import { Dropdown, Icon } from 'semantic-ui-react';
 import DifficultyList from './DifficultyList';
 
 const DifficultyMenu = ({ difficultySetting }) => (

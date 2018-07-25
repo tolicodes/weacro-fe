@@ -2,22 +2,17 @@ import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import ProfileMenu from '../ProfileMenu';
 import { UserIcon } from './styled';
-import { HomeButton, AboutUs } from './Buttons';
-import Popup from '../Popup';
+import { HomeButton, AboutUs } from './Links';
 
 function Options({ isUser }) {
+  console.log(isUser)
   return (
     <Fragment>
-      <Dropdown
-        item
-        icon={isUser ? <UserIcon isUser /> : <UserIcon />}
-      >
+      <Dropdown item icon={<UserIcon />} >
         <Dropdown.Menu>
           <Route render={HomeButton} />
           <Route render={AboutUs} />
-          {isUser && <Popup />}
         </Dropdown.Menu>
       </Dropdown>
     </Fragment>
