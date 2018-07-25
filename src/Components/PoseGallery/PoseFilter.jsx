@@ -6,7 +6,6 @@ import { checks } from './helpers';
 function PosesFilter({
   lists, difficultySetting, tag, poses, currentSlide, single, poseSearch,
 }) {
-  console.log(difficultySetting)
   return poses
     .filter(pose => checks(single, poseSearch, pose, tag, lists, difficultySetting))
     .map((pose, cardIndex, filteredPoses) => {

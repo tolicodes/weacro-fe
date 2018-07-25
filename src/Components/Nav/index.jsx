@@ -9,14 +9,18 @@ import Search from './Search';
 import TagChoice from './TagChoice';
 import BackButton from '../UI/BackButton';
 
+function Nav({pathname, ...rest}) {
+  return (
+    <Fragment>
+      <LeftMenu isAboutPath={pathname==='/about'} {...rest} />
+      <RightMenu {...rest} />
+    </Fragment>
+  );
+}
+
 function LeftMenu({isAboutPath, difficulty, userName}) {
-  if (isAboutPath) {
-    return (
-      <div style={{ width: '20%' }}>
-        <BackButton />
-      </div>
-    );
-  } return (
+  if (isAboutPath) return <BackButton />;
+  return (
     <Fragment>
       <DifficultyMenu difficultySetting={difficulty} />
       <TagChoice loggedIn={userName} />
@@ -34,16 +38,7 @@ function RightMenu({userName}) {
   )
 }
 
-function Nav(props) {
-  return (
-    <Fragment>
-      <LeftMenu {...props} />
-      <RightMenu {...props} />
-    </Fragment>
-  );
-}
-
-const mapStateToProps = ({ view: { difficulty }, user: { name: userName } }) => ({ difficulty, userName });
+const mapStateToProps = ({ view: { difficulty }, user: { name: userName }, router: { location: { pathname } } }) => ({ difficulty, userName, pathname });
 const mapDispatchToProps = dispatch => ({
   UserLogout: () => dispatch({
     type: LOG_OUT,

@@ -6,7 +6,6 @@ import { UserIcon } from './styled';
 import { HomeButton, AboutUs } from './Links';
 
 function Options({ isUser }) {
-  console.log(isUser)
   return (
     <Fragment>
       <Dropdown item icon={<UserIcon />} >
@@ -24,7 +23,7 @@ Options.defaultProps = {
 };
 
 Options.propTypes = {
-  isUser: PropTypes.string,
+  isUser: PropTypes.bool,
 };
 
 export default Options;

@@ -8,14 +8,14 @@ import PosesFilter from './PoseFilter';
 import { SET_SLIDE_INDEX } from '../../store/actions/actionTypes';
 
 function PoseGallery({setSlide, match, filterToPoseName, difficulty, tag}) {
-  let swipe = null;
-  const next = () => swipe.next();
-  const prev = () => swipe.prev();
+  let swipeNode = null;
+  const next = () => swipeNode.next();
+  const prev = () => swipeNode.prev();
   const single = match.params ? match.params.singlePose : null;
   return (
     <PoseGalleryArea>
       <SwipeUI
-        reactSwipe={reactSwipe => (swipe = reactSwipe)}
+        reactSwipe={reactSwipe => (swipeNode = reactSwipe)}
         updater={setSlide}
         skip={single}
         key={difficulty+tag+filterToPoseName}
