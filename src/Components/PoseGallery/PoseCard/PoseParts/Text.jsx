@@ -18,7 +18,6 @@ const Details = styled.div`
   `;
 const TextArea = styled.div``;
 const Title = styled.h1`
-  margin-right: 45px;
   font-family: Special Elite;
 
   @media ${Desktop}{
@@ -26,7 +25,6 @@ const Title = styled.h1`
   }
 `;
 const Subtitle = styled.p`
-  margin-right: 45px;
   font-family: Roboto Condensed;
   @media ${PhonePortrait}{
     color: black;

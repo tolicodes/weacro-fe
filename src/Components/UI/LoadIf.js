@@ -18,4 +18,9 @@ export default {
       {children}
     </Media>
   ),
+  notDesktop: ({ children }) => (
+    <Media query={`not ${Desktop}`}>
+      {children}
+    </Media>
+  ),
 };

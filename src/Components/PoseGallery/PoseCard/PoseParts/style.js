@@ -40,11 +40,13 @@ export const HeartIcon = styled(Icon).attrs({
     style: heartStyle,
     color: 'red'
 })`
-	display: flex;
 	width: 45px;
 	height: 45px;
 	cursor: pointer;
-	font-size: 3em;
+    font-size: 3em;
+    position: absolute;
+    top: 90%;
+    left: 3%;
 `;
 export const PopupModal = styled(Modal).attrs({
     size: 'mini'

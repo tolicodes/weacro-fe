@@ -23,5 +23,4 @@ height: 90vh;
 
 export const Details = styled.div`
   display: flex;
-  padding-top: 10px;
 `;

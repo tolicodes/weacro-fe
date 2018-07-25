@@ -2,14 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoadDisplay from '../../../UI/Loader';
 import { Img } from './style';
+import HeartArea from '../Heart';
+import LoadIf from '../../../UI/LoadIf';
 
-function PosePicture({ img }){
+function PosePicture({ img, poseID, userID }){
   return (
-    <Img
-      src={img}
-      alt="Loading..."
-      loader={LoadDisplay}
-    />
+    <div style={{position:'relative'}} >
+      <Img
+        src={img}
+        alt="Loading..."
+        loader={LoadDisplay}
+      />
+    <LoadIf.Desktop>
+      <HeartArea poseID={poseID} userID={userID} />
+    </LoadIf.Desktop>
+    </div>
   );
 }
 
