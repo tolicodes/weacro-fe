@@ -1,3 +1,3 @@
 import React from 'react';
 import { Loader } from 'semantic-ui-react';
-export default () => <Loader active size='massive' />;
+export default props => <Loader active size='massive' {...props} />; 

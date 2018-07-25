@@ -5827,6 +5827,10 @@ react-is@^16.3.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.1.tgz#d624c4650d2c65dbd52c72622bbf389435d9776e"
 
+react-load-image@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-load-image/-/react-load-image-0.1.6.tgz#abafacb18813983a8af43d9f2fe9ed7bf89ca29a"
+
 react-media@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-media/-/react-media-1.6.1.tgz#84e7986a92356b106dca026363f8f5c88054fe72"
