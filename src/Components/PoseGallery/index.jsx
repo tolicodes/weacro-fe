@@ -18,7 +18,7 @@ function PoseGallery({setSlide, match, filterToPoseName, difficulty, tag}) {
         reactSwipe={reactSwipe => (swipe = reactSwipe)}
         updater={setSlide}
         skip={single}
-        key={difficulty+tag}
+        key={difficulty+tag+filterToPoseName}
       >
         <PosesFilter />
       </SwipeUI>

@@ -10,7 +10,6 @@ function PosesFilter({
   return poses
     .filter(pose => checks(single, poseSearch, pose, tag, lists, difficultySetting))
     .map((pose, cardIndex, filteredPoses) => {
-      console.log(pose.difficulty)
       return (
       <PoseCard
         key={pose.name}
