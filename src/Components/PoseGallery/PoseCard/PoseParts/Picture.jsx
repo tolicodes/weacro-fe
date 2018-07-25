@@ -10,7 +10,7 @@ import { Img } from './style';
 class PosePicture extends PureComponent {
   state = { ready: false }
 
-  setReady = () => setTimeout(this.setState({ ready: true }),100)
+  setReady = () => this.setState({ ready: true })
 
   render = () => {
     const { img, poseID, userID } = this.props;
