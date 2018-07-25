@@ -3,20 +3,28 @@ import { connect } from 'react-redux';
 import PoseCard from './PoseCard';
 import { checks } from './helpers';
 
-const PosesFilter = ({
+function PosesFilter({
   lists, difficultySetting, tag, poses, currentSlide, single, poseSearch,
-}) => poses
-  .filter(pose => checks(single, poseSearch, pose, tag, lists, difficultySetting))
-  .map((pose, cardIndex, filteredPoses) => (
-    <PoseCard
-      key={pose.name}
-      pose={pose}
-      cardIndex={cardIndex}
-      filteredPoses={filteredPoses}
-      difficultySetting={difficultySetting}
-      currentSlide={currentSlide}
-    />
-  ));
+}) {
+  console.log(difficultySetting)
+  return poses
+    .filter(pose => checks(single, poseSearch, pose, tag, lists, difficultySetting))
+    .map((pose, cardIndex, filteredPoses) => {
+      console.log(pose.difficulty)
+      return (
+      <PoseCard
+        key={pose.name}
+        pose={pose}
+        cardIndex={cardIndex}
+        filteredPoses={filteredPoses}
+        difficultySetting={difficultySetting}
+        currentSlide={currentSlide}
+      />
+    )
+  }
+  );
+}
+
 const mapStateToProps = ({
   pose: { poses },
   view: {

@@ -7,7 +7,7 @@ import LoadIf from '../UI/LoadIf';
 import PosesFilter from './PoseFilter';
 import { SET_SLIDE_INDEX } from '../../store/actions/actionTypes';
 
-function PoseGallery({setSlide, match, filterToPoseName}) {
+function PoseGallery({setSlide, match, filterToPoseName, difficulty, tag}) {
   let swipe = null;
   const next = () => swipe.next();
   const prev = () => swipe.prev();
@@ -18,6 +18,7 @@ function PoseGallery({setSlide, match, filterToPoseName}) {
         reactSwipe={reactSwipe => (swipe = reactSwipe)}
         updater={setSlide}
         skip={single}
+        key={difficulty+tag}
       >
         <PosesFilter />
       </SwipeUI>
@@ -32,7 +33,7 @@ function PoseGallery({setSlide, match, filterToPoseName}) {
   );
 };
 
-const mapStateToProps = ({ view: { name: filterToPoseName } }) => ({ filterToPoseName });
+const mapStateToProps = ({ view: { name: filterToPoseName, difficulty, tag } }) => ({ filterToPoseName, difficulty, tag });
 
 const mapDispatchToProps = dispatch => ({
   setSlide: currentSlide => dispatch({
