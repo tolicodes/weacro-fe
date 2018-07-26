@@ -3,12 +3,12 @@ import { Route } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { UserIcon } from './styled';
-import { HomeButton, AboutUs } from './Links';
+import { HomeButton, AboutUs } from './Links/Links';
 
 function Options({ isUser }) {
   return (
     <Fragment>
-      <Dropdown item icon={<UserIcon />} >
+      <Dropdown item icon={<UserIcon />}>
         <Dropdown.Menu>
           <Route render={HomeButton} />
           <Route render={AboutUs} />

@@ -10,11 +10,15 @@ const initialState = {
   difficulty: '0',
   lists: {},
 };
-export default function reducer(state = initialState, action){
+export default function reducer(state = initialState, action) {
   let setState;
   let listOfTags = {};
-  const { user, listName, pose_id, type, } = action;
-  const { FILL_USER, LOG_OUT, COLLECT_POSE, DUMP_POSE } = actionTypes;
+  const {
+    user, listName, poseId, type,
+  } = action;
+  const {
+    FILL_USER, LOG_OUT, COLLECT_POSE, DUMP_POSE,
+  } = actionTypes;
 
   switch (type) {
     case FILL_USER:
@@ -25,16 +29,16 @@ export default function reducer(state = initialState, action){
       return updateObject(state, setState);
     case COLLECT_POSE:
       listOfTags = state.lists[listName]
-        ? addToInnerList(state.lists[listName], listName, pose_id)
-        : makeNewList(listName, pose_id);
+        ? addToInnerList(state.lists[listName], listName, poseId)
+        : makeNewList(listName, poseId);
 
       return updateList(state, state.lists, listOfTags);
     case DUMP_POSE:
       listOfTags[listName] = [...state.lists[listName]];
-      const deleteIndex = listOfTags[listName].indexOf(pose_id);
+      const deleteIndex = listOfTags[listName].indexOf(poseId);
       listOfTags[listName].splice(deleteIndex, 1);
       return updateList(state, state.lists, listOfTags);
     default:
   }
   return state;
-};
+}

@@ -2,23 +2,23 @@ import React, { Fragment } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { LOG_OUT } from '../../store/actions/actionTypes';
-import DifficultyMenu from './Difficulty';
+import DifficultyMenu from './Difficulty/Difficulty';
 import Options from './OptionsMenu/OptionsMenu';
-import ProfileMenu from './ProfileMenu';
-import Search from './Search';
+import ProfileMenu from './ProfileMenu/ProfileMenu';
+import Search from './Search/Search';
 import TagChoice from './TagChoice';
-import BackButton from '../UI/BackButton';
+import BackButton from '../UI/BackButton/BackButton';
 
-function Nav({pathname, ...rest}) {
+function Nav({ pathname, ...rest }) {
   return (
     <Fragment>
-      <LeftMenu isAboutPath={pathname==='/about'} {...rest} />
+      <LeftMenu isAboutPath={pathname === '/about'} {...rest} />
       <RightMenu {...rest} />
     </Fragment>
   );
 }
 
-function LeftMenu({isAboutPath, difficulty, userName}) {
+function LeftMenu({ isAboutPath, difficulty, userName }) {
   if (isAboutPath) return <BackButton />;
   return (
     <Fragment>
@@ -27,15 +27,15 @@ function LeftMenu({isAboutPath, difficulty, userName}) {
       <Search />
     </Fragment>
   );
-};
+}
 
-function RightMenu({userName}) {
+function RightMenu({ userName }) {
   return (
     <Menu.Menu position="right">
       <ProfileMenu />
       <Options isUser={userName} />
     </Menu.Menu>
-  )
+  );
 }
 
 const mapStateToProps = ({ view: { difficulty }, user: { name: userName }, router: { location: { pathname } } }) => ({ difficulty, userName, pathname });

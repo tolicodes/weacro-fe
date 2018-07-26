@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PoseCard from './PoseCard';
+import PoseCard from './PoseCard/PoseCard';
 import { checks } from './helpers';
 
 function PosesFilter({
@@ -8,8 +8,7 @@ function PosesFilter({
 }) {
   return poses
     .filter(pose => checks(single, poseSearch, pose, tag, lists, difficultySetting))
-    .map((pose, cardIndex, filteredPoses) => {
-      return (
+    .map((pose, cardIndex, filteredPoses) => (
       <PoseCard
         key={pose.name}
         pose={pose}
@@ -18,9 +17,7 @@ function PosesFilter({
         difficultySetting={difficultySetting}
         currentSlide={currentSlide}
       />
-    )
-  }
-  );
+    ));
 }
 
 const mapStateToProps = ({

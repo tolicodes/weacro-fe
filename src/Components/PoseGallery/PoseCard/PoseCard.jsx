@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
-import LoadIf from '../../UI/LoadIf';
-import PictureArea from './PictureArea';
+import React from 'react';
 import { isClose } from '../helpers';
+import PictureArea from './PictureArea';
 import { Card } from './style';
 
 export default function PoseCard({
@@ -22,9 +21,7 @@ export default function PoseCard({
       {!isClose(2, filteredPoses, cardIndex, currentSlide) ? (
         <div />
       ) : (
-        <Fragment>
-          <PictureArea img={img} poseID={id} name={name} subtitle={subtitle}/>
-        </Fragment>
+        <PictureArea img={img} poseID={id} name={name} subtitle={subtitle} />
       )}
     </Card>
   );

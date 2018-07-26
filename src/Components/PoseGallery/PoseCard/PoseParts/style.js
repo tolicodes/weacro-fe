@@ -6,7 +6,9 @@ import {
   PhoneLandscape,
 } from '../../../UI/DeviceRules';
 
-const heartStyle = {fontSize:'3em', display: 'flex', width: '45px',height:'45', cursor: 'pointer', alignItems: 'center'};
+const heartStyle = {
+  fontSize: '3em', display: 'flex', width: '45px', height: '45', cursor: 'pointer', alignItems: 'center',
+};
 
 
 export const Img = styled.img`
@@ -37,8 +39,8 @@ export const HeartArea = styled.div`
 	padding-left: 10px;
 `;
 export const HeartIcon = styled(Icon).attrs({
-    style: heartStyle,
-    color: 'red'
+  style: heartStyle,
+  color: 'red',
 })`
 	width: 45px;
 	height: 45px;
@@ -49,8 +51,8 @@ export const HeartIcon = styled(Icon).attrs({
     left: 3%;
 `;
 export const PopupModal = styled(Modal).attrs({
-    size: 'mini'
-  })`
+  size: 'mini',
+})`
     height: 350px;
     padding: 20px;
   `;

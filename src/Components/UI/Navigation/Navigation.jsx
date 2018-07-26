@@ -1,5 +1,7 @@
 import React from 'react';
-import { LeftArrow, RightArrow, ArrowButton, Control } from './style'
+import {
+  LeftArrow, RightArrow, ArrowButton, Control,
+} from './style';
 
 export default function Navigation({ next, prev, skip }) {
   if (skip) return null;
@@ -13,4 +15,4 @@ export default function Navigation({ next, prev, skip }) {
       </ArrowButton>
     </Control>
   );
-};
+}

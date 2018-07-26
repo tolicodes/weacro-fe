@@ -7,31 +7,43 @@ import HeartArea from '../Heart';
 import { Img } from './style';
 
 
+function LoadImage({ setReady, img  }) {
+  return (
+    <ImageLoader src={img}>
+      <Img onLoad={setReady} />
+      <p>couldn't load</p>
+      <Loading indeterminate />
+    </ImageLoader>
+  );
+}
+
 class PosePicture extends PureComponent {
   state = { ready: false }
 
-  setReady = () => this.setState({ ready: true })
+  setReady = () => this.setState({ ready: true });
 
   render = () => {
-    const { img, poseID, userID } = this.props;
+    const { props: { img, poseID, userID }, state: { ready }, setReady } = this;
 
     return (
-      <div style={{position:'relative'}} >
-        <ImageLoader src={img} >
-          <Img onLoad={this.setReady} />
-          <div>Error!</div>
-          <Loading indeterminate/>
-        </ImageLoader>
+      <div style={{ position: 'relative' }}>
+        <LoadImage setReady={setReady} img={img} />
         <LoadIf.Desktop>
-          { this.state.ready && <HeartArea poseID={poseID} userID={userID} />}
+          { ready && <HeartArea poseID={poseID} userID={userID} />}
         </LoadIf.Desktop>
       </div>
-    )
+    );
   }
 }
 
+PosePicture.defaultProps = {
+  userID: undefined,
+};
+
 PosePicture.propTypes = {
   img: PropTypes.string.isRequired,
+  poseID: PropTypes.number.isRequired,
+  userID: PropTypes.number,
 };
 
 export default PosePicture;

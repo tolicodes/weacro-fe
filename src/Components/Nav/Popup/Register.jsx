@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Form, Grid, Message, Segment } from 'semantic-ui-react';
+import {
+  Button, Form, Grid, Message, Segment,
+} from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import {addToUser}  from '../../../store/actions/actions';
-import api from '../../../API';
 import styler from 'react-styling';
+import { addToUser } from '../../../store/actions/actions';
+import api from '../../../API';
 
 const MessageExampleError = () => (
   <Message
@@ -41,19 +43,21 @@ class RegisterForm extends Component {
     badName: false,
     isSignup: true,
   };
+
   formSubmit = async () => {
-    const { email, password, name } = this.state.controls;
-    if (!email.valid || !password.valid || !name.valid) return; //add error message
+    const { controls: { email, password, name } } = this.state;
+    if (!email.valid || !password.valid || !name.valid) return; // add error message
     try {
       const res = await api.user.register(email.value, password.value, name.value);
-      //const res = await axios({ method: 'POST', url, data });
-      console.log('response from server',res)
-      localStorage.setItem("token", res.token);
+      // const res = await axios({ method: 'POST', url, data });
+      console.log('response from server', res);
+      localStorage.setItem('token', res.token);
       this.props.UserLogin(res.user);
     } catch (err) {
       console.log(err);
     }
   };
+
   checkValidity(value, rules) {
     let isValid = true;
     if (!rules) return true;
@@ -71,6 +75,7 @@ class RegisterForm extends Component {
 
     return isValid;
   }
+
   input = (e, type) => {
     const { value } = e.target;
     const { controls } = this.state;
@@ -112,9 +117,11 @@ class RegisterForm extends Component {
 
     this.setState({ controls: updatedControls });
   };
+
   displayError() {
     if (this.state.badPW) return <MessageExampleError />;
   }
+
   render = () => {
     const { login } = this.props;
     const { password, email, name } = this.state.controls;
@@ -155,13 +162,15 @@ class RegisterForm extends Component {
                   onChange={e => this.input(e, 'pw')}
                 />
                 <Button type="formSubmit" color="teal" fluid size="large">
-                  Register
-                </Button>
+Register
+</Button>
               </Segment>
             </Form>
             <Message>
-              Already have an account?
-              <Button onClick={login} style={style.login_button}>Login</Button>
+Already have an account?
+<Button onClick={login} style={style.login_button}>
+Login
+</Button>
             </Message>
             {this.displayError()}
           </Grid.Column>

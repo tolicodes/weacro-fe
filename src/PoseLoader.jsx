@@ -6,10 +6,9 @@ import PropTypes from 'prop-types';
 import { storeUser, storePoses } from './store/actions/actions';
 import api from './API';
 import LoadDisplay from './Components/UI/Loader';
-import PoseGallery from './Components/PoseGallery';
+import PoseGallery from './Components/PoseGallery/PoseGallery';
 
 class PoseLoader extends PureComponent {
-
   fetchData = async (UserLogin, StorePoses) => {
     try {
       UserLogin(await api.user.get(false));
@@ -19,9 +18,9 @@ class PoseLoader extends PureComponent {
     }
   };
 
-  posesNotLoaded = () => (!this.props.poses || !this.props.poses.length) ? true : false;
+  posesNotLoaded = () => (!!((!this.props.poses || !this.props.poses.length)));
 
-  render = () =>  {
+  render = () => {
     const { posesNotLoaded, props: { UserLogin, StorePoses, match }, fetchData } = this;
     if (posesNotLoaded()) {
       fetchData(UserLogin, StorePoses);
