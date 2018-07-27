@@ -37,7 +37,7 @@ PoseLoader.propTypes = {
 const mapStateToProps = ({ pose: { poses } }) => ({ poses });
 const mapDispatchToProps = dispatch => ({
   UserLogin: user => dispatch(storeUser(user)),
-  StorePoses: pose => dispatch(storePoses(pose)),
+  StorePoses: poses => dispatch(storePoses(poses)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PoseLoader);

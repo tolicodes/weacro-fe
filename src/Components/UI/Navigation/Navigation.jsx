@@ -3,8 +3,7 @@ import {
   LeftArrow, RightArrow, ArrowButton, Control,
 } from './style';
 
-export default function Navigation({ next, prev, skip }) {
-  if (skip) return null;
+export default function Navigation({ next, prev }) {
   return (
     <Control>
       <ArrowButton onClick={prev}>

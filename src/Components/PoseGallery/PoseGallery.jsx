@@ -28,7 +28,6 @@ function PoseGallery({
         <Navigation
           next={next}
           prev={prev}
-          skip={single || filterToPoseName}
         />
       </LoadIf.Desktop>
     </PoseGalleryArea>
