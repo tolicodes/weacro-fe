@@ -4,8 +4,11 @@ const isFavorite = (poseId, lists) => lists && lists.Favorites && lists.Favorite
 
 const simplify = word => word.toLowerCase().replace('-', ' ');
 
-export const checks = (singlePose, filterByPoseName, pose, filteredView, lists, difficultySetting) => {
-  if (singlePose || filterByPoseName) {
+export const checks = (addressSearchTerm, filterByPoseName, pose, filteredView, lists, difficultySetting) => {
+  if (addressSearchTerm) {
+    return simplify(pose.name).includes(simplify(addressSearchTerm));
+  }
+  if (filterByPoseName) {
     return simplify(pose.name).includes(simplify(filterByPoseName));
   }
   if (filteredView && !isFavorite(pose.id, lists)) {

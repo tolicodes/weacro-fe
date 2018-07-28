@@ -4,10 +4,10 @@ import PoseCard from './PoseCard/PoseCard';
 import { checks } from './helpers';
 
 function PosesFilter({
-  lists, difficultySetting, tag, poses, currentSlide, single, poseSearch,
+  lists, difficultySetting, tag, poses, currentSlide, poseSearch, addressSearchTerm,
 }) {
   return poses
-    .filter(pose => checks(single, poseSearch, pose, tag, lists, difficultySetting))
+    .filter(pose => checks(addressSearchTerm, poseSearch, pose, tag, lists, difficultySetting))
     .map((pose, cardIndex, filteredPoses) => (
       <PoseCard
         key={pose.name}

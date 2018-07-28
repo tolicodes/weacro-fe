@@ -13,16 +13,15 @@ function PoseGallery({
   let swipeNode = null;
   const next = () => swipeNode.next();
   const prev = () => swipeNode.prev();
-  const single = match.params ? match.params.singlePose : null;
+  const addressSearchTerm = match.params ? match.params.searchTerm : false;
   return (
     <PoseGalleryArea>
       <SwipeUI
         reactSwipe={(reactSwipe) => { swipeNode = reactSwipe; }}
         updater={setSlide}
-        skip={single}
         key={difficulty + tag + filterToPoseName}
       >
-        <PosesFilter />
+        <PosesFilter addressSearchTerm={addressSearchTerm} />
       </SwipeUI>
       <LoadIf.Desktop>
         <Navigation

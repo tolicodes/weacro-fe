@@ -16,7 +16,7 @@ function Router() {
         />
         <Route
           exact
-          path="/pose/:singlePose?"
+          path="/pose/:searchTerm?"
           component={PoseLoader}
         />
         <Route path="/about" component={AboutUs} />
