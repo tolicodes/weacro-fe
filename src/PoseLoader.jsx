@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
@@ -8,31 +8,36 @@ import api from './API';
 import LoadDisplay from './Components/UI/Loader';
 import PoseGallery from './Components/PoseGallery/PoseGallery';
 
-class PoseLoader extends PureComponent {
-  fetchData = async (UserLogin, StorePoses) => {
-    try {
-      UserLogin(await api.user.get(false));
-      StorePoses(await api.poses.get(false));
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  posesNotLoaded = () => (!!((!this.props.poses || !this.props.poses.length)));
-
-  render = () => {
-    const { posesNotLoaded, props: { UserLogin, StorePoses, match }, fetchData } = this;
-    if (posesNotLoaded()) {
-      fetchData(UserLogin, StorePoses);
-      return <LoadDisplay />;
-    }
-    return <PoseGallery match={match} />;
+async function fetchData(UserLogin, StorePoses) {
+  try {
+    UserLogin(await api.user.get(false));
+    StorePoses(await api.poses.get(false));
+  } catch (e) {
+    console.error(e);
   }
 }
 
+
+function PoseLoader({
+  UserLogin, StorePoses, match, poses,
+}) {
+  if (!poses) {
+    fetchData(UserLogin, StorePoses);
+    return <LoadDisplay />;
+  }
+  return <PoseGallery match={match} />;
+}
+
 PoseLoader.propTypes = {
-  poses: PropTypes.arrayOf(PropTypes.object).isRequired,
+  poses: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object), PropTypes.bool]),
+  UserLogin: PropTypes.func.isRequired,
+  StorePoses: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
 };
+PoseLoader.defaultProps = {
+  poses: false,
+};
+
 
 const mapStateToProps = ({ pose: { poses } }) => ({ poses });
 const mapDispatchToProps = dispatch => ({

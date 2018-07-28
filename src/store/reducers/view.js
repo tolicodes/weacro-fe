@@ -6,7 +6,7 @@ const initialState = {
   tag: '',
   currentSlide: 0,
   device: 'Portrait',
-  name: 'reverse',
+  name: '',
 };
 
 const reducer = (state = initialState, action) => {

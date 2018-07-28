@@ -36,7 +36,7 @@ Search.defaultProps = {
 };
 
 Search.propTypes = {
-  filter: PropTypes.string,
+  filter: PropTypes.func,
   poseSearchTerm: PropTypes.string,
 };
 
