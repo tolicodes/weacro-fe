@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PhoneLandscape } from '../../UI/DeviceRules';
+import { PhoneLandscape } from 'Components/UI/DeviceRules';
 
 
 export const Card = styled.div`

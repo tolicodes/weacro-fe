@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import LoadIf from '../../../UI/LoadIf';
+import LoadIf from 'Components/UI/LoadIf';
 import HeartArea from '../Heart';
 import { Img } from './style';
 

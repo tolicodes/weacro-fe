@@ -4,19 +4,9 @@ import PoseGallery from './PoseGallery';
 
 
 const mapStateToProps = (
-  {
-    view: { name: filterToPoseName, difficulty, tag },
-    router: { location: { pathname } },
-
-  },
+  { view: { name, difficulty, tag } },
 ) => (
-  {
-    key: filterToPoseName + difficulty + tag,
-    addressSearchTerm:
-        pathname.includes('/pose')
-          ? pathname.split('/')[2]
-          : false,
-  }
+  { reloader: name + difficulty + tag }
 );
 
 const mapDispatchToProps = dispatch => ({

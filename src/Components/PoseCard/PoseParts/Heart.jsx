@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DisplayForm from 'Components/Nav/Popup/DisplayForm';
 import { HeartArea, HeartIcon, PopupModal } from './style';
-import DisplayForm from '../../../Nav/Popup/DisplayForm';
 
 function Heart({
   isFavorite, poseID, userID, remove, add,

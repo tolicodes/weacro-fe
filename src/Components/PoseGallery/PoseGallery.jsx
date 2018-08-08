@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Navigation from '../UI/Navigation/Navigation';
 import SwipeUI from '../UI/SwipeUI';
 import LoadIf from '../UI/LoadIf';
-import PosesFilter from './PoseFilter';
-import Loading from '../UI/PoseLoader';
+import PosesFilter from '../PoseCard';
+import PosesAreLoaded from '../UI/PoseLoader';
 
 export default class PoseGallery extends React.PureComponent {
   swipeNode = React.createRef();
@@ -14,18 +14,18 @@ export default class PoseGallery extends React.PureComponent {
   prev = () => this.swipeNode.prev();
 
   render = () => {
-    const { setSlide, addressSearchTerm, key } = this.props;
+    const { setSlide, reloader } = this.props;
     return (
       <PoseGalleryArea>
-        <Loading>
+        <PosesAreLoaded>
           <SwipeUI
             reactSwipe={(reactSwipe) => { this.swipeNode = reactSwipe; }}
             updater={setSlide}
-            key={key}
+            key={reloader}
           >
-            <PosesFilter addressSearchTerm={addressSearchTerm} />
+            <PosesFilter />
           </SwipeUI>
-        </Loading>
+        </PosesAreLoaded>
         <LoadIf.Desktop>
           <Navigation
             next={this.next}

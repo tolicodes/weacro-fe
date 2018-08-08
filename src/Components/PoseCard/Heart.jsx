@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToUser, removeFromUser } from '../../../store/actions/actions';
-import { addToFavorites, removeFromFavorites } from '../helpers';
+import { addToUser, removeFromUser } from 'store/actions/actions';
+import { addToFavorites, removeFromFavorites } from './helpers';
 import Heart from './PoseParts/Heart';
 
 function HeartArea({

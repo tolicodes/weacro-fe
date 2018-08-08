@@ -1,9 +1,10 @@
 import React from 'react';
-import { isClose } from '../helpers';
+import { connect } from 'react-redux';
+import { isClose } from './helpers';
 import PictureArea from './PictureArea';
 import { Card } from './style';
 
-export default function PoseCard({
+function PoseCard({
   pose: {
     img,
     difficulty,
@@ -26,3 +27,11 @@ export default function PoseCard({
     </Card>
   );
 }
+
+const mapStateToProps = (
+  { view: { difficulty, currentSlide } },
+) => (
+  { difficultySetting: difficulty, currentSlide }
+);
+
+export default connect(mapStateToProps)(PoseCard);

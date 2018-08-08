@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import LoadIf from '../../UI/LoadIf';
+import LoadIf from 'Components/UI/LoadIf';
 import HeartLoader from './Heart';
 import PosePicture from './PoseParts/Picture';
 import PoseText from './PoseParts/Text/Text';

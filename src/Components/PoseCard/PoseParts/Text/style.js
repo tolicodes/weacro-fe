@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Desktop, PhonePortrait } from '../../../../UI/DeviceRules';
+import { Desktop, PhonePortrait } from 'Components/UI/DeviceRules';
 
 export const Details = styled.div`
   width: 100%;

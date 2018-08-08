@@ -4,7 +4,7 @@ import {
   Desktop,
   PhonePortrait,
   PhoneLandscape,
-} from '../../../UI/DeviceRules';
+} from 'Components/UI/DeviceRules';
 
 const heartStyle = {
   fontSize: '3em', display: 'flex', width: '45px', height: '45', cursor: 'pointer', alignItems: 'center',
