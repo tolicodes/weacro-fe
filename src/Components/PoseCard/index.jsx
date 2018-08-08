@@ -12,7 +12,7 @@ const filterPoses = (poses, address, searchTerm, tag, lists, difficultySetting) 
   return poses.filter((pose) => {
     if (addressSearchTerm) return simplify(pose.name).includes(simplify(addressSearchTerm));
     if (tag && !isFavorite(pose.id, lists)) return false;
-    if (searchTerm) return simplify(pose.name).includes(simplify(searchTerm));
+    if (searchTerm && !simplify(pose.name).includes(simplify(searchTerm))) return false;
     if (difficultySetting === 'All' || difficultySetting === pose.difficulty) return true;
     return false;
   });

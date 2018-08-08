@@ -4,18 +4,15 @@ import { isClose } from './helpers';
 import PictureArea from './PictureArea';
 import { Card } from './style';
 
-function PoseCard({
+const PoseCard = ({
   pose: {
-    img,
-    difficulty,
-    id,
-    name,
+    img, difficulty, id, name,
   },
   difficultySetting,
   filteredPoses,
   currentSlide,
   cardIndex,
-}) {
+}) => {
   const subtitle = `${difficultySetting === 'All' ? `Difficulty: ${difficulty}` : ''}`;
   return (
     <Card key={img}>
@@ -26,7 +23,7 @@ function PoseCard({
       )}
     </Card>
   );
-}
+};
 
 const mapStateToProps = (
   { view: { difficulty, currentSlide } },

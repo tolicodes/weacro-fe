@@ -10,18 +10,21 @@ function getOptions() {
   };
 }
 
-async function get(url, offline) {
-  if (offline) {
-    return JSON.parse(localStorage.getItem(url));
-  }
-
+async function getFromServer(url) {
   try {
     const res = await axios.get(`${REACT_APP_API_URL_BASE}${url}`, getOptions());
     localStorage.setItem(url, JSON.stringify(res.data));
     return res.data;
   } catch (e) {
-    console.log(e);
+    return console.log(e);
   }
+}
+
+function get(url, offline) {
+  if (offline) {
+    return JSON.parse(localStorage.getItem(url));
+  }
+  return getFromServer(url);
 }
 
 async function post(url, data, withoutToken) {
@@ -53,13 +56,13 @@ async function remove(url) {
 
 export default {
   user: {
-    get: async offline => get('/user', offline),
+    get: offline => get('/user', offline),
     login: async ({ email, password }) => post('/user/login', { email, password }, true),
     register: async (email, password, name) => post('/user/register', { email, password, name }, true),
   },
 
   poses: {
-    get: async offline => get('/poses', offline),
+    get: offline => get('/poses', offline),
   },
   list: {
     add: async (pose_id, user_id, list_name) => post('/user/addPose', { pose_id, user_id, list_name }),

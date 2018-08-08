@@ -1,7 +1,8 @@
+import api from 'API';
 import * as actionTypes from '../actions/actionTypes';
 // import { updateObject } from '../utility';
 const initialState = {
-  poses: false,
+  poses: api.poses.get(true) || false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -9,9 +10,8 @@ const reducer = (state = initialState, action) => {
   const { STORE_POSE } = actionTypes;
   switch (type) {
     case STORE_POSE:
-      let poses = [];
-      poses = pose;
-      return { ...state, poses };
+      if (state.poses.length === pose.length) return state;
+      return { ...state, poses: [...pose] };
     default:
   }
   return state;
