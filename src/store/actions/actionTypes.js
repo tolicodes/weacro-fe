@@ -9,3 +9,5 @@ export const SET_SLIDE_INDEX = 'SET_SLIDE_INDEX';
 export const SET_VIEW = 'SET_VIEW';
 export const FILTER_BY_NAME = 'FILTER_BY_NAME';
 export const REFRESH_POSE_DISPLAY = 'REFRESH_POSE_DISPLAY';
+export const GET_POSES = 'GET_POSES';
+export const GET_USER = 'GET_USER';

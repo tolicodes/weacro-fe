@@ -7,5 +7,12 @@
     "parser": "babel-eslint",
     "rules": {
         "linebreak-style": 0
-    }
+    },
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "paths": ["src"]
+          }
+        }
+      }
 }

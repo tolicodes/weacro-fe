@@ -38,7 +38,15 @@ function RightMenu({ userName }) {
   );
 }
 
-const mapStateToProps = ({ view: { difficulty }, user: { name: userName }, router: { location: { pathname } } }) => ({ difficulty, userName, pathname });
+const mapStateToProps = (
+  {
+    view: { difficulty }, user: { name: userName },
+    router: { location: { pathname } },
+  },
+) => (
+  { difficulty, userName, pathname }
+);
+
 const mapDispatchToProps = dispatch => ({
   UserLogout: () => dispatch({
     type: LOG_OUT,

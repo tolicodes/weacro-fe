@@ -1,48 +1,43 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Navigation from '../UI/Navigation/Navigation';
 import SwipeUI from '../UI/SwipeUI';
 import LoadIf from '../UI/LoadIf';
 import PosesFilter from './PoseFilter';
-import { SET_SLIDE_INDEX } from '../../store/actions/actionTypes';
+import Loading from '../UI/PoseLoader';
 
-function PoseGallery({
-  setSlide, match, filterToPoseName, difficulty, tag,
-}) {
-  let swipeNode = null;
-  const next = () => swipeNode.next();
-  const prev = () => swipeNode.prev();
-  const addressSearchTerm = match.params ? match.params.searchTerm : false;
-  return (
-    <PoseGalleryArea>
-      <SwipeUI
-        reactSwipe={(reactSwipe) => { swipeNode = reactSwipe; }}
-        updater={setSlide}
-        key={difficulty + tag + filterToPoseName}
-      >
-        <PosesFilter addressSearchTerm={addressSearchTerm} />
-      </SwipeUI>
-      <LoadIf.Desktop>
-        <Navigation
-          next={next}
-          prev={prev}
-        />
-      </LoadIf.Desktop>
-    </PoseGalleryArea>
-  );
+export default class PoseGallery extends React.PureComponent {
+  swipeNode = React.createRef();
+
+  next = () => this.swipeNode.next();
+
+  prev = () => this.swipeNode.prev();
+
+  render = () => {
+    const { setSlide, addressSearchTerm, key } = this.props;
+    return (
+      <PoseGalleryArea>
+        <Loading>
+          <SwipeUI
+            reactSwipe={(reactSwipe) => { this.swipeNode = reactSwipe; }}
+            updater={setSlide}
+            key={key}
+          >
+            <PosesFilter addressSearchTerm={addressSearchTerm} />
+          </SwipeUI>
+        </Loading>
+        <LoadIf.Desktop>
+          <Navigation
+            next={this.next}
+            prev={this.prev}
+          />
+        </LoadIf.Desktop>
+      </PoseGalleryArea>
+
+    );
+  }
 }
 
-const mapStateToProps = ({ view: { name: filterToPoseName, difficulty, tag } }) => ({ filterToPoseName, difficulty, tag });
-
-const mapDispatchToProps = dispatch => ({
-  setSlide: currentSlide => dispatch({
-    type: SET_SLIDE_INDEX,
-    currentSlide,
-  }),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PoseGallery);
 
 const PoseGalleryArea = styled.div`
   height: 92vh;
