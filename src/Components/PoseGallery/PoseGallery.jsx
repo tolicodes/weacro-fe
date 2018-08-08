@@ -6,7 +6,7 @@ import LoadIf from '../UI/LoadIf';
 import PosesFilter from '../PoseCard';
 import PosesAreLoaded from '../UI/PoseLoader';
 
-export default class PoseGallery extends React.PureComponent {
+export default class PoseGallery extends React.Component {
   swipeNode = React.createRef();
 
   next = () => this.swipeNode.next();

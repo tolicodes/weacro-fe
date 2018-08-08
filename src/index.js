@@ -19,11 +19,11 @@ WebFont.load({
 ReactDOM.render(
   /* eslint-disable */
   <Provider store={store}>
+  <LoadInitialServerData>
     <ConnectedRouter history={history}>
-      <LoadInitialServerData>
         <Router />
-      </LoadInitialServerData>
     </ConnectedRouter>
+    </LoadInitialServerData>
   </Provider>,
   /* eslint-enable */
   document.getElementById('root'),

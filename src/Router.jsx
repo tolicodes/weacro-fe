@@ -5,7 +5,6 @@ import NotFound from 'Components/UI/Pages/NotFound';
 import AboutUs from 'Components/UI/Pages/About/About';
 import PoseGallery from 'Components/PoseGallery';
 
-
 export default () => (
   <PageLayout>
     <Switch>

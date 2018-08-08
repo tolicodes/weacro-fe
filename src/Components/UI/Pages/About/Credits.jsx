@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Credit, Image, TextBox, Title, CreditText,
 } from './style';
@@ -20,13 +19,5 @@ const Credits = ({ Team }) => Team.map(({
   </Credit>
 ));
 
-Credits.propTypes = {
-  person: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    profileSite: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default Credits;
