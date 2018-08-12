@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import LoadIf from 'Components/UI/LoadIf';
 import Heart from './Heart';
-import PoseText from './PoseParts/Text/Text';
-import { Details, Img } from './style';
+import {
+  TextDetails, Details, Img, TextArea, Title, Subtitle,
+} from './style';
 
-class PoseCard extends React.Component {
+class PoseCard extends React.PureComponent {
   state = { ready: false }
 
   setReady = () => this.setState({ ready: true });
@@ -38,23 +39,29 @@ class PoseCard extends React.Component {
             <LoadIf.Portrait>
               <Heart poseID={poseID} />
             </LoadIf.Portrait>
-            <PoseText poseTitle={name} subtitle={subtitle} />
+            <TextDetails>
+              <TextArea>
+                <Title>
+                  {name}
+                </Title>
+                <Subtitle>
+                  {subtitle}
+                </Subtitle>
+              </TextArea>
+            </TextDetails>
           </Details>
         </LoadIf.notLandscape>
       </React.Fragment>
     );
   }
 }
-PoseCard.defaultProps = {
-  userID: undefined,
-};
+
 
 PoseCard.propTypes = {
   img: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   poseID: PropTypes.number.isRequired,
-  userID: PropTypes.number,
 };
 
 export default PoseCard;

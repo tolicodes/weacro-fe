@@ -49,8 +49,29 @@ export const Img = styled.img`
     }
 `;
 export const HeartArea = styled.div`
-	display: flex;
-	width: 70px;
-	height: 70px;
-	padding-left: 10px;
+display: flex;
+width: 70px;
+height: 70px;
+padding-left: 10px;
+`;
+export const TextDetails = styled.div`
+  width: 100%;
+  `;
+export const TextArea = styled.div``;
+export const Title = styled.h1`
+  font-family: Special Elite;
+
+  @media ${Desktop}{
+    margin-top: 2vh;
+  }
+`;
+export const Subtitle = styled.p`
+  font-family: Roboto Condensed;
+  @media ${PhonePortrait}{
+    color: black;
+    margin-top: 1vh;
+  }
+  @media ${Desktop}{
+    font-size: 2vh;
+  }
 `;
