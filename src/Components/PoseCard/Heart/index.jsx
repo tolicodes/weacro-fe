@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { addToUser, removeFromUser } from 'store/actions/actions';
 import api from 'API';
-import HeartModeSetter from './HeartModeSetter';
+import Heart from './Heart';
 
 const mapStateToProps = ({
   view: { tag },
   user: { name, lists, id },
 }) => ({
-  guestMode: !name && !tag,
+  isGuest: !name && !tag,
   lists,
   userID: id,
 });
@@ -24,4 +24,4 @@ const mapDispatchToProps = {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeartModeSetter);
+export default connect(mapStateToProps, mapDispatchToProps)(Heart);
