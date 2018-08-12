@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import OptionsMenu from './OptionsMenu';
+import Options from './Options';
 
 const mapStateToProps = (
   { user: { name } },
@@ -7,4 +7,4 @@ const mapStateToProps = (
   { name }
 );
 
-export default connect(mapStateToProps)(OptionsMenu);
+export default connect(mapStateToProps)(Options);

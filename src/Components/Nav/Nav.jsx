@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Menu } from 'semantic-ui-react';
 import DifficultyFilter from './Difficulty';
-import OptionsMenu from './OptionsMenu';
+import OptionsMenu from './Options';
 import ProfileMenu from './ProfileMenu';
 import Search from './Search';
 import TagChoice from './TagChoice';
@@ -9,7 +9,7 @@ import BackButton from '../UI/BackButton/BackButton';
 
 const Nav = ({ pathname }) => (
   <Fragment>
-    <LeftMenu isAboutPath={pathname === '/about'}  />
+    <LeftMenu isAboutPath={pathname === '/about'} />
     <RightMenu />
   </Fragment>
 );

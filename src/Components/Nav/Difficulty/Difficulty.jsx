@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import DifficultyList from './DifficultyList';
+import List from './List';
 
 const colors = {
   All: null, Easy: 'green', Intermediate: 'blue', Hard: 'red', Expert: 'purple',
@@ -19,7 +19,7 @@ const DifficultyMenu = ({ difficulty }) => (
 )}
   >
     <Dropdown.Menu>
-      <DifficultyList />
+      <List />
     </Dropdown.Menu>
   </Dropdown>
 );

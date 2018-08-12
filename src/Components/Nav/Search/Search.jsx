@@ -18,7 +18,14 @@ export default class Search extends PureComponent {
         state: { active }, props: { poseSearchTerm, filter }, activate, deactivate,
       } = this;
       if (active) {
-        return <input value={poseSearchTerm} onChange={({ target: { value: name } }) => filter(name)} onBlur={deactivate} onMouseLeave={deactivate} />;
+        return (
+          <input
+            value={poseSearchTerm}
+            onChange={({ target: { value: name } }) => filter(name)}
+            onBlur={deactivate}
+            onMouseLeave={deactivate}
+          />
+        );
       }
       return (
         <MenuItem onMouseEnter={activate} onFocus={activate} onClick={activate}>

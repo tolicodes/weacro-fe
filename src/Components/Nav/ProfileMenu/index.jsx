@@ -5,9 +5,15 @@ import ProfileMenu from './ProfileMenu';
 const mapStateToProps = (
   { user: { name } },
 ) => (
-  { userName: name });
+  {
+    userName: name,
+    loggedIn: !!name,
+  });
 const mapDispatchToProps = {
-  UserLogout: logOut,
+  UserLogout: () => {
+    logOut();
+    localStorage.removeItem('token');
+  },
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileMenu);

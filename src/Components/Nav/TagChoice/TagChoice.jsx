@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MenuItem, TagsIcon } from './styles';
-import TagMenu from '../Tags';
+import TagMenu from './TagsMenu';
 
 const TagChoice = ({ loggedIn }) => {
   if (loggedIn) { return <TagMenu />; }
