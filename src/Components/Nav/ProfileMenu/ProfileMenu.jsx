@@ -1,5 +1,5 @@
 import React from 'react';
-import Popup from '../Popup/Popup';
+import Popup from './Popup/Popup';
 import { SignOutIcon, MenuItem } from './style';
 
 const ProfileMenu = ({ loggedIn, userName, UserLogout }) => (

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Button, Form, Grid, Message, Segment,
 } from 'semantic-ui-react';
-import api from '../../../../API';
+import api from 'API';
 
 export default class LoginForm extends Component {
   state = {

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { logOut } from '../../../store/actions/actions';
+import { logOut } from 'store/actions/actions';
 import ProfileMenu from './ProfileMenu';
 
 const mapStateToProps = (

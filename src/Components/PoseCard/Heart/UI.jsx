@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DisplayForm from 'Components/Nav/Popup/DisplayForm';
+import DisplayForm from 'Components/Nav/ProfileMenu/Popup/DisplayForm';
 import { HeartArea, HeartIcon, PopupModal } from './style';
 
 const Heart = ({
