@@ -10,10 +10,10 @@ export default function SwipeUI({
       ref={reactSwipe}
       swipeOptions={{
         continuous: true,
-        transitionEnd: (index, elem) => updater(index),
+        transitionEnd: index => updater(index),
       }}
     >
       {children}
     </ReactSwipe>
   );
-};
+}

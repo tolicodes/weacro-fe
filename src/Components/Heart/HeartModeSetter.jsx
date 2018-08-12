@@ -1,14 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
-import { addToUser, removeFromUser } from 'store/actions/actions';
-import { addToFavorites, removeFromFavorites } from './helpers';
-import Heart from './PoseParts/Heart';
+import { addToFavorites, removeFromFavorites } from '../PoseCard/helpers';
+import Heart from './UI';
 
-function HeartArea({
-  userName, tag, poseID, userID, lists, removeFromUserList, addToUserList,
-}) {
-  if (!userName && !tag) {
+const HeartModeSetter = ({
+  userName,
+  tag,
+  lists,
+  userID,
+  removeFromUserList,
+  addToUserList,
+  poseID,
+}) => {
+  const guestMode = !userName && !tag;
+  if (guestMode) {
     return (
       <Heart
         key={`${poseID}heart`}
@@ -18,7 +23,8 @@ function HeartArea({
         userID={userID}
       />
     );
-  } return (
+  }
+  return (
     <Heart
       key={`${poseID}heart`}
       poseID={poseID}
@@ -30,15 +36,15 @@ function HeartArea({
       userID={userID}
     />
   );
-}
+};
 
-HeartArea.defaultProps = {
+HeartModeSetter.defaultProps = {
   userName: false,
   tag: false,
   userID: false,
 };
 
-HeartArea.propTypes = {
+HeartModeSetter.propTypes = {
   userName: PropTypes.string,
   tag: PropTypes.string,
   poseID: PropTypes.number.isRequired,
@@ -48,17 +54,4 @@ HeartArea.propTypes = {
   addToUserList: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ view: { tag }, user: { name, lists, id } }) => ({
-  userName: name,
-  tag,
-  lists,
-  userID: id,
-});
-
-const mapDispatchToProps = dispatch => ({
-  addToUserList: (poseId, listName) => dispatch(addToUser(poseId, listName)),
-  removeFromUserList: (poseId, listName) => dispatch(removeFromUser(poseId, listName)),
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(HeartArea);
+export default HeartModeSetter;

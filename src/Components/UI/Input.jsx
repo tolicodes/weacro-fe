@@ -1,20 +1,34 @@
 import React from 'react';
 
 
-export default props => {
+export default ({
+  elementType, elementConfig, changed, value, label,
+}) => {
   let inputElement = null;
-  
-  switch (props.elementType) {
+
+  switch (elementType) {
     case 'input':
-      inputElement = <input {...props.elementConfig} value={props.value} onChange={props.changed} />;
+      inputElement = (
+        <input
+          {...elementConfig}
+          value={value}
+          onChange={changed}
+        />
+      );
       break;
     case 'textarea':
-      inputElement = <textarea {...props.elementConfig} value={props.value} onChange={props.changed} />;
+      inputElement = (
+        <textarea
+          {...elementConfig}
+          value={value}
+          onChange={changed}
+        />
+      );
       break;
     case 'select':
       inputElement = (
-        <select value={props.value} onChange={props.changed}>
-          {props.elementConfig.options.map(option => (
+        <select value={value} onChange={changed}>
+          {elementConfig.options.map(option => (
             <option key={option.value} value={option.value}>
               {option.displayValue}
             </option>
@@ -23,12 +37,19 @@ export default props => {
       );
       break;
     default:
-      inputElement = <input {...props.elementConfig} value={props.value} onChange={props.changed} />;
+      inputElement = (
+        <input
+          {...elementConfig}
+          value={value}
+          onChange={changed}
+        />
+      );
   }
-
   return (
     <div>
-      <label>{props.label}</label>
+      <label>
+        {label}
+      </label>
       {inputElement}
     </div>
   );

@@ -7,26 +7,24 @@ const colors = {
   All: null, Easy: 'green', Intermediate: 'blue', Hard: 'red', Expert: 'purple',
 };
 
-function DifficultyMenu({ difficultySetting }) {
-  return (
-    <Dropdown
-      item
-      icon={(
-        <Icon
-          name="filter"
-          size="big"
-          color={colors[difficultySetting]}
-        />
+const DifficultyMenu = ({ difficulty }) => (
+  <Dropdown
+    item
+    icon={(
+      <Icon
+        name="filter"
+        size="big"
+        color={colors[difficulty]}
+      />
 )}
-    >
-      <Dropdown.Menu>
-        <DifficultyList />
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-}
+  >
+    <Dropdown.Menu>
+      <DifficultyList />
+    </Dropdown.Menu>
+  </Dropdown>
+);
 
 DifficultyMenu.propTypes = {
-  difficultySetting: PropTypes.string.isRequired,
+  difficulty: PropTypes.string.isRequired,
 };
 export default DifficultyMenu;

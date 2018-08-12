@@ -5,15 +5,21 @@ import {
 } from './style';
 import DisplayForm from './DisplayForm';
 
+const LoginTrigger = (
+  <StyledLoginButton>
+    {'LOGIN'}
+  </StyledLoginButton>
+);
+
 function DesktopVersion() {
   return (
     <PopupModal
-    size="mini"
-    trigger={<StyledLoginButton>LOGIN</StyledLoginButton>}
-  >
-    <DisplayForm />
-  </PopupModal>
-  )
+      size="mini"
+      trigger={LoginTrigger}
+    >
+      <DisplayForm />
+    </PopupModal>
+  );
 }
 
 export default function Popup() {
@@ -25,7 +31,13 @@ export default function Popup() {
       <LoadIf.Portrait>
         <PopupModal
           size="tiny"
-          trigger={(<MenuItem><LoginIcon /></MenuItem>)}
+          trigger={
+            (
+              <MenuItem>
+                <LoginIcon />
+              </MenuItem>
+            )
+}
         >
           <DisplayForm />
         </PopupModal>

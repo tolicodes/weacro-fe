@@ -1,7 +1,7 @@
 import {
   FILL_USER, STORE_POSE, COLLECT_POSE, DUMP_POSE,
   FILTER_DIFFICULTY, SET_TAG, FILTER_BY_NAME,
-  GET_POSES, GET_USER,
+  GET_POSES, GET_USER, LOG_OUT, SET_SLIDE_INDEX,
 } from './actionTypes';
 
 export const storeUser = user => ({ type: FILL_USER, user });
@@ -24,4 +24,10 @@ export const filterByName = name => ({
 });
 export const setTag = (tag, currentSlide) => ({
   type: SET_TAG, tag, currentSlide,
+});
+export const logOut = () => ({ type: LOG_OUT });
+
+export const setSlide = currentSlide => ({
+  type: SET_SLIDE_INDEX,
+  currentSlide,
 });

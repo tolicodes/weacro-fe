@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { UserIcon } from './styled';
 import { HomeButton, AboutUs } from './Links/Links';
 
-function Options({ isUser }) {
+function Options(/* { isUser } */) {
   return (
     <Fragment>
       <Dropdown item icon={<UserIcon />}>

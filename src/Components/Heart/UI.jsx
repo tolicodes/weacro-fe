@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import DisplayForm from 'Components/Nav/Popup/DisplayForm';
 import { HeartArea, HeartIcon, PopupModal } from './style';
 
-function Heart({
+const Heart = ({
   isFavorite, poseID, userID, remove, add,
-}) {
+}) => {
   if (!userID) {
     return (
       <PopupModal trigger={<HeartIcon name="empty heart" />}>
@@ -19,7 +19,7 @@ function Heart({
       <HeartIcon name={isFavorite ? 'heart' : 'empty heart'} />
     </HeartArea>
   );
-}
+};
 
 Heart.defaultProps = {
   remove: undefined,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from './styled';
-import LoadIf from '../LoadIf';
+import LoadIf from '../UI/LoadIf';
 
 function HeaderUI({ children }) {
   return (

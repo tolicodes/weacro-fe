@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { SET_SLIDE_INDEX } from '../../store/actions/actionTypes';
+import { setSlide } from '../../store/actions/actions';
 import PoseGallery from './PoseGallery';
 
 
@@ -9,11 +9,6 @@ const mapStateToProps = (
   { reloader: name + difficulty + tag }
 );
 
-const mapDispatchToProps = dispatch => ({
-  setSlide: currentSlide => dispatch({
-    type: SET_SLIDE_INDEX,
-    currentSlide,
-  }),
-});
+const mapDispatchToProps = { setSlide };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PoseGallery);

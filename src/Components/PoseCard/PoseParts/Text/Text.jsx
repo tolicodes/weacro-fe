@@ -4,12 +4,12 @@ import {
   Details, TextArea, Title, Subtitle,
 } from './style';
 
-function PoseText({ poseTitle, subtitle }) {
+function PoseText({ title, subtitle }) {
   return (
     <Details>
       <TextArea>
         <Title>
-          {poseTitle}
+          {title}
         </Title>
         <Subtitle>
           {subtitle}
@@ -20,7 +20,7 @@ function PoseText({ poseTitle, subtitle }) {
 }
 
 PoseText.propTypes = {
-  poseTitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
 };
 

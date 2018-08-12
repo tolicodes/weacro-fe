@@ -1,6 +1,6 @@
 {
     "extends": ["airbnb", "plugin:react-redux/recommended"],
-    "plugins": ["react-redux"],
+    "plugins": ["react-redux", "redux-saga"],
     "env": {
         "browser": true
     },

@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import Navigation from '../UI/Navigation/Navigation';
 import SwipeUI from '../UI/SwipeUI';
 import LoadIf from '../UI/LoadIf';
-import PosesFilter from '../PoseCard';
+import MapPoses from '../MapPoses';
 import PosesAreLoaded from '../UI/PoseLoader';
+import { PoseGalleryArea } from './style';
 
 export default class PoseGallery extends React.Component {
   swipeNode = React.createRef();
@@ -23,7 +23,7 @@ export default class PoseGallery extends React.Component {
             updater={setSlide}
             key={reloader}
           >
-            <PosesFilter />
+            <MapPoses />
           </SwipeUI>
         </PosesAreLoaded>
         <LoadIf.Desktop>
@@ -37,8 +37,3 @@ export default class PoseGallery extends React.Component {
     );
   }
 }
-
-
-const PoseGalleryArea = styled.div`
-  height: 92vh;
-`;

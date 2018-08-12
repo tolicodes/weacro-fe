@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MenuItem, TagsIcon } from './styles';
-import TagMenu from './Tags/Tags';
+import TagMenu from '../Tags';
 
-function TagChoice({ loggedIn }) {
+const TagChoice = ({ loggedIn }) => {
   if (loggedIn) { return <TagMenu />; }
   return (
     <MenuItem>
       <TagsIcon />
     </MenuItem>
   );
-}
+};
 
 TagChoice.defaultProps = {
   loggedIn: false,

@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import LoadIf from 'Components/UI/LoadIf';
-import HeartArea from '../Heart';
+import HeartArea from '../../Heart';
 import { Img } from './style';
 
 
@@ -24,14 +23,6 @@ class PosePicture extends PureComponent {
   }
 }
 
-PosePicture.defaultProps = {
-  userID: undefined,
-};
-
-PosePicture.propTypes = {
-  img: PropTypes.string.isRequired,
-  poseID: PropTypes.number.isRequired,
-  userID: PropTypes.number,
-};
+// PosePicture.defaultProps = { user: { id: null } };
 
 export default PosePicture;
