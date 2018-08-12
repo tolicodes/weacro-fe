@@ -8,7 +8,7 @@ import registerServiceWorker from 'registerServiceWorker';
 import Router from 'Router';
 import store from 'store';
 import history from 'store/history';
-import LoadInitialServerData from './Loader';
+import LoadInitialServerData from 'Startup';
 
 WebFont.load({
   google: {
@@ -19,10 +19,10 @@ WebFont.load({
 ReactDOM.render(
   /* eslint-disable */
   <Provider store={store}>
-  <LoadInitialServerData>
-    <ConnectedRouter history={history}>
+    <LoadInitialServerData>
+      <ConnectedRouter history={history}>
         <Router />
-    </ConnectedRouter>
+      </ConnectedRouter>
     </LoadInitialServerData>
   </Provider>,
   /* eslint-enable */

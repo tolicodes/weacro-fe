@@ -17,7 +17,6 @@ const HeartModeSetter = ({
         poseID={poseID}
         isFavorite={false}
         isGuest
-        userID={userID}
       />
     )
     : (
@@ -25,7 +24,7 @@ const HeartModeSetter = ({
         key={`${poseID}heart`}
         poseID={poseID}
         kind={Favorites.includes(poseID) ? 'heart' : 'empty heart'}
-        isUser={userID}
+        isGuest={false}
         action={
           Favorites.includes(poseID)
             ? () => removeFromUserList(poseID, userID)
@@ -40,7 +39,7 @@ HeartModeSetter.defaultProps = {
 
 HeartModeSetter.propTypes = {
   poseID: PropTypes.number.isRequired,
-  userID: PropTypes.number,
+  userID: PropTypes.bool,
   guestMode: PropTypes.bool,
   removeFromUserList: PropTypes.func.isRequired,
   addToUserList: PropTypes.func.isRequired,

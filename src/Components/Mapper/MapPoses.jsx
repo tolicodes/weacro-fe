@@ -1,7 +1,7 @@
 import React from 'react';
 import CardLoader from './CardLoader';
 
-export default ({ poses }) => poses.map((pose, cardIndex, filteredPoses) => (
+const Mapper = ({ poses }) => poses.map((pose, cardIndex, filteredPoses) => (
   <CardLoader
     key={pose.name + pose.id}
     pose={pose}
@@ -9,3 +9,5 @@ export default ({ poses }) => poses.map((pose, cardIndex, filteredPoses) => (
     filteredPoses={filteredPoses}
   />
 ));
+
+export default Mapper;

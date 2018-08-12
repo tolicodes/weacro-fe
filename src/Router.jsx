@@ -1,9 +1,16 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import PageLayout from 'Components/UI/Pages/PageLayout';
+import PageLayout from 'Components/UI/PageLayout';
 import NotFound from 'Components/UI/Pages/NotFound';
-import AboutUs from 'Components/UI/Pages/About/About';
-import PoseGallery from 'Components/PoseGallery';
+import AboutUs from 'Components/UI/Pages/About';
+import SwipeControl from 'Components/UI/Swipe';
+import PoseMapper from 'Components/Mapper';
+
+const GalleryDisplay = () => (
+  <SwipeControl>
+    <PoseMapper />
+  </SwipeControl>
+);
 
 export default () => (
   <PageLayout>
@@ -11,12 +18,12 @@ export default () => (
       <Route
         exact
         path="/"
-        component={PoseGallery}
+        component={GalleryDisplay}
       />
       <Route
         exact
         path="/pose/:searchTerm?"
-        component={PoseGallery}
+        component={GalleryDisplay}
       />
       <Route path="/about" component={AboutUs} />
       <Route component={NotFound} />

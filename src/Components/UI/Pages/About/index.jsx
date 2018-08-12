@@ -9,7 +9,9 @@ function AboutUs() {
   return (
     <AboutPage>
       <TitleArea>
-        <PageTitle>About Us</PageTitle>
+        <PageTitle>
+          {'About Us'}
+        </PageTitle>
       </TitleArea>
       <Participants>
         <Credits Team={Team} />

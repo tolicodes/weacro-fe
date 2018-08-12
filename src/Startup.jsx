@@ -8,9 +8,9 @@ const Startup = ({ children, getPoses, getUser }) => {
   return children;
 };
 
-const mapDispatchToProps = dispatch => ({
-  getPoses: () => dispatch(asyncGetPoses()),
-  getUser: () => dispatch(asyncGetUser()),
-});
+const mapDispatchToProps = {
+  getPoses: asyncGetPoses,
+  getUser: asyncGetUser,
+};
 
 export default connect(null, mapDispatchToProps)(Startup);

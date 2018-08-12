@@ -33,14 +33,14 @@ async function post(url, data, withoutToken) {
       const res = await axios.post(`${REACT_APP_API_URL_BASE}${url}`, data, getOptions());
       return res.data;
     } catch (e) {
-      console.log(e);
+      return console.log(e);
     }
   } else {
     try {
       const res = await axios.post(`${REACT_APP_API_URL_BASE}${url}`, data);
       return res.data;
     } catch (e) {
-      console.log(e);
+      return console.log(e);
     }
   }
 }
@@ -50,7 +50,7 @@ async function remove(url) {
     const res = await axios.delete(`${REACT_APP_API_URL_BASE}${url}`, getOptions());
     return res.data;
   } catch (e) {
-    console.log(e);
+    return console.log(e);
   }
 }
 

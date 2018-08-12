@@ -4,9 +4,9 @@ import DisplayForm from 'Components/Nav/ProfileMenu/Popup/DisplayForm';
 import { HeartArea, HeartIcon, PopupModal } from './style';
 
 const Heart = ({
-  isUser, action, kind,
+  isGuest, action, kind,
 }) => {
-  if (!isUser) {
+  if (isGuest) {
     return (
       <PopupModal trigger={<HeartIcon name="empty heart" />}>
         <DisplayForm />
@@ -28,7 +28,7 @@ Heart.defaultProps = {
 };
 
 Heart.propTypes = {
-  isUser: PropTypes.string,
+  isGuest: PropTypes.bool,
   action: PropTypes.func,
   kind: PropTypes.string,
 };
