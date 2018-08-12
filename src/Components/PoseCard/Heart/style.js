@@ -23,9 +23,9 @@ width: 45px;
 height: 45px;
 cursor: pointer;
 font-size: 3em;
-position: absolute;
-top: 90%;
-left: 3%;
+position: relative;
+top: -60px;
+left: 15px;
 `;
 
 export const PopupModal = styled(Modal).attrs({
