@@ -1,20 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { addToFavorites, removeFromFavorites } from '../PoseCard/helpers';
 import Heart from './UI';
 
 const HeartModeSetter = ({
-  userName,
-  tag,
+  guestMode,
   lists,
   userID,
   removeFromUserList,
   addToUserList,
   poseID,
-}) => {
-  const guestMode = !userName && !tag;
-  if (guestMode) {
-    return (
+}) => (
+  guestMode
+    ? (
       <Heart
         key={`${poseID}heart`}
         poseID={poseID}
@@ -22,34 +19,29 @@ const HeartModeSetter = ({
         isGuest
         userID={userID}
       />
-    );
-  }
-  return (
-    <Heart
-      key={`${poseID}heart`}
-      poseID={poseID}
-      isFavorite={
+    )
+    : (
+      <Heart
+        key={`${poseID}heart`}
+        poseID={poseID}
+        isFavorite={
           lists && lists.Favorites && lists.Favorites.indexOf(poseID) !== -1
         }
-      remove={() => removeFromFavorites(poseID, userID, removeFromUserList)}
-      add={() => addToFavorites(poseID, userID, addToUserList)}
-      userID={userID}
-    />
-  );
-};
+        remove={removeFromUserList}
+        add={addToUserList}
+        userID={userID}
+      />
+    ));
 
 HeartModeSetter.defaultProps = {
-  userName: false,
-  tag: false,
+  guestMode: true,
   userID: false,
 };
 
 HeartModeSetter.propTypes = {
-  userName: PropTypes.string,
-  tag: PropTypes.string,
   poseID: PropTypes.number.isRequired,
   userID: PropTypes.number,
-  lists: PropTypes.any.isRequired,
+  guestMode: PropTypes.bool,
   removeFromUserList: PropTypes.func.isRequired,
   addToUserList: PropTypes.func.isRequired,
 };

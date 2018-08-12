@@ -1,51 +1,60 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
-import PoseCard from './PoseCard';
+import LoadIf from 'Components/UI/LoadIf';
+import Heart from './Heart';
+import PoseText from './PoseParts/Text/Text';
+import { Details, Img } from './style';
 
-const filterPoses = (poses, address, searchTerm, tag, lists, difficultySetting) => {
-  const addressSearchTerm = address.includes('/pose')
-    ? address.split('/')[2]
-    : false;
-  const simplify = word => word.toLowerCase().replace('-', ' ');
-  const isFavorite = poseId => lists && lists.Favorites && lists.Favorites.indexOf(poseId) !== -1;
+class PoseCard extends React.Component {
+  state = { ready: false }
 
-  return poses.filter((pose) => {
-    if (addressSearchTerm) return simplify(pose.name).includes(simplify(addressSearchTerm));
-    if (tag && !isFavorite(pose.id, lists)) return false;
-    if (searchTerm && !simplify(pose.name).includes(simplify(searchTerm))) return false;
-    if (difficultySetting === 'All' || difficultySetting === pose.difficulty) return true;
-    return false;
-  });
+  setReady = () => this.setState({ ready: true });
+
+  displayImage = () => {
+    const {
+      setReady,
+      state: { ready },
+      props: { img, poseID, isClose },
+    } = this;
+    if (!isClose) return null;
+    return (
+      <div style={{ position: 'relative' }}>
+        <Img onLoad={setReady} src={img} />
+
+        <LoadIf.Desktop>
+          { ready && <Heart poseID={poseID} />}
+        </LoadIf.Desktop>
+      </div>
+    );
+  }
+
+  render = () => {
+    const { name, subtitle, poseID } = this.props;
+    return (
+      <React.Fragment>
+        {this.displayImage()}
+        <LoadIf.notLandscape>
+          <Details>
+            <LoadIf.Portrait>
+              <Heart poseID={poseID} />
+            </LoadIf.Portrait>
+            <PoseText poseTitle={name} subtitle={subtitle} />
+          </Details>
+        </LoadIf.notLandscape>
+      </React.Fragment>
+    );
+  }
+}
+PoseCard.defaultProps = {
+  userID: undefined,
 };
 
+PoseCard.propTypes = {
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  poseID: PropTypes.number.isRequired,
+  userID: PropTypes.number,
+};
 
-const MapPoseCards = ({ difficultySetting, poses, currentSlide }) => poses
-  .map((pose, cardIndex, filteredPoses) => (
-    <PoseCard
-      key={pose.name + pose.id}
-      pose={pose}
-      cardIndex={cardIndex}
-      filteredPoses={filteredPoses}
-    />
-  ));
-
-
-const mapStateToProps = (
-  {
-    pose: { poses },
-    view: {
-      tag, difficulty, currentSlide, name: searchTerm,
-    },
-    router: { location: { pathname } },
-    user: { lists },
-  },
-) => (
-  {
-    poses: filterPoses(poses, pathname, searchTerm, tag, lists, difficulty),
-    difficultySetting: difficulty,
-    currentSlide,
-  }
-);
-
-
-export default connect(mapStateToProps)(MapPoseCards);
+export default PoseCard;

@@ -1,39 +1,35 @@
 import React from 'react';
-import PoseCard from '../../PoseCard';
+import PictureArea from '../../PoseCard';
+import { Card } from '../../PoseCard/style';
 
 const isClose = (preload, filteredPoses, cardIndex, currentSlide) => {
   const distance = Math.abs(cardIndex - currentSlide);
   return distance < preload || distance > filteredPoses.length - preload;
 };
 
-export default ({
-  pose: {
-    img, id: poseID, name: title, difficulty,
-  },
+const PoseIsClose = ({
   filteredPoses,
   cardIndex,
-  difficultySetting,
   currentSlide,
-  user,
-}) => (
-  <React.Fragment key={img}>
-    {isClose(4, filteredPoses, cardIndex, currentSlide) ? (
-      <PoseCard
-        subtitle={difficultySetting === 'All' ? `Difficulty: ${difficulty}` : ''}
-        img={img}
-        poseID={poseID}
-        title={title}
-        user={user}
-      />
-    ) : (
-      <div />
-    )}
-  </React.Fragment>
-);
+  children,
+}) => React.cloneElement(children,
+  { isClose: isClose(4, filteredPoses, cardIndex, currentSlide) });
 
-/*
-
+export default ({
+  pose: {
     img, difficulty, id, name,
-  const subtitle = `;
-
-*/
+  },
+  difficultySetting,
+  ...rest
+}) => (
+  <Card key={img}>
+    <PoseIsClose {...rest}>
+      <PictureArea
+        img={img}
+        poseID={id}
+        name={name}
+        subtitle={difficultySetting === 'All' ? `Difficulty: ${difficulty}` : ''}
+      />
+    </PoseIsClose>
+  </Card>
+);
