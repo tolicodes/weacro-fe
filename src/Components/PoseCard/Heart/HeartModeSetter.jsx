@@ -4,7 +4,7 @@ import Heart from './UI';
 
 const HeartModeSetter = ({
   guestMode,
-  lists,
+  lists: { Favorites } = {},
   userID,
   removeFromUserList,
   addToUserList,
@@ -24,12 +24,12 @@ const HeartModeSetter = ({
       <Heart
         key={`${poseID}heart`}
         poseID={poseID}
-        isFavorite={
-          lists && lists.Favorites && lists.Favorites.indexOf(poseID) !== -1
-        }
-        remove={removeFromUserList}
-        add={addToUserList}
-        userID={userID}
+        kind={Favorites.includes(poseID) ? 'heart' : 'empty heart'}
+        isUser={userID}
+        action={
+          Favorites.includes(poseID)
+            ? () => removeFromUserList(poseID, userID)
+            : () => addToUserList(poseID, userID)}
       />
     ));
 

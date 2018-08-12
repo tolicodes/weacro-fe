@@ -4,36 +4,33 @@ import DisplayForm from 'Components/Nav/ProfileMenu/Popup/DisplayForm';
 import { HeartArea, HeartIcon, PopupModal } from './style';
 
 const Heart = ({
-  isFavorite, poseID, userID, remove, add,
+  isUser, action, kind,
 }) => {
-  if (!userID) {
+  if (!isUser) {
     return (
       <PopupModal trigger={<HeartIcon name="empty heart" />}>
         <DisplayForm />
       </PopupModal>
     );
   }
-  const action = isFavorite ? () => remove(poseID, userID) : () => add(poseID, userID);
   return (
     <HeartArea onClick={action}>
-      <HeartIcon name={isFavorite ? 'heart' : 'empty heart'} />
+      <HeartIcon name={kind} />
     </HeartArea>
   );
 };
 
 Heart.defaultProps = {
-  remove: undefined,
-  userID: false,
-  add: undefined,
+  isUser: false,
+  action: null,
+  kind: 'empty heart',
 
 };
 
 Heart.propTypes = {
-  isFavorite: PropTypes.bool.isRequired,
-  poseID: PropTypes.number.isRequired,
-  userID: PropTypes.string,
-  remove: PropTypes.func,
-  add: PropTypes.func,
+  isUser: PropTypes.string,
+  action: PropTypes.func,
+  kind: PropTypes.string,
 };
 
 export default Heart;
