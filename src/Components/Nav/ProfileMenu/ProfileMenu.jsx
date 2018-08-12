@@ -1,11 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Popup from '../Popup/Popup';
-import { LOG_OUT } from '../../../store/actions/actionTypes';
 import { SignOutIcon, MenuItem } from './style';
 
 function ProfileMenu({ userName, UserLogout }) {
-  const logOut = () => {
+  const logUserOut = () => {
     localStorage.removeItem('token');
     UserLogout();
   };
@@ -13,18 +11,12 @@ function ProfileMenu({ userName, UserLogout }) {
     return <Popup />;
   }
   return (
-    <MenuItem onClick={logOut}>
+    <MenuItem onClick={logUserOut}>
       <SignOutIcon />
       {userName}
     </MenuItem>
   );
 }
 
-const mapStateToProps = ({ user: { name } }) => ({ userName: name });
-const mapDispatchToProps = dispatch => ({
-  UserLogout: () => dispatch({
-    type: LOG_OUT,
-  }),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileMenu);
+export default ProfileMenu;

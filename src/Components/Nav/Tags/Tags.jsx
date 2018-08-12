@@ -1,10 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import TagList from './TagList';
 
-function TagMenu({ tag }) {
+const TagMenu = ({ tag }) => {
   const determineIcon = () => {
     switch (tag) {
       case '':
@@ -23,7 +22,7 @@ function TagMenu({ tag }) {
       </Dropdown.Menu>
     </Dropdown>
   );
-}
+};
 
 TagMenu.propTypes = {
   tag: PropTypes.string,
@@ -32,6 +31,4 @@ TagMenu.defaultProps = {
   tag: false,
 };
 
-const mapStateToProps = ({ view: { tag }, user: { loggedIn: name } }) => ({ tag, name });
-
-export default connect(mapStateToProps)(TagMenu);
+export default TagMenu;

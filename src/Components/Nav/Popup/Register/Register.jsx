@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import {
   Button, Form, Grid, Message, Segment,
 } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import styler from 'react-styling';
-import { addToUser } from '../../../store/actions/actions';
-import api from '../../../API';
+import api from '../../../../API';
 
 const MessageExampleError = () => (
   <Message
@@ -18,7 +15,26 @@ const MessageExampleError = () => (
   />
 );
 
-class RegisterForm extends Component {
+const checkValidity = (value, rules) => {
+  let isValid = true;
+  if (!rules) return true;
+  if (rules.required) isValid = value.trim() !== '' && isValid;
+  if (rules.minLength) isValid = value.length >= rules.minLength && isValid;
+  if (rules.maxLength) isValid = value.length <= rules.maxLength && isValid;
+  if (rules.isEmail) {
+    const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    isValid = pattern.test(value) && isValid;
+  }
+  if (rules.isNumeric) {
+    const pattern = /^\d+$/;
+    isValid = pattern.test(value) && isValid;
+  }
+
+  return isValid;
+};
+
+
+export default class RegisterForm extends Component {
   state = {
     controls: {
       name: {
@@ -46,35 +62,18 @@ class RegisterForm extends Component {
 
   formSubmit = async () => {
     const { controls: { email, password, name } } = this.state;
+    const { UserLogin } = this.props;
     if (!email.valid || !password.valid || !name.valid) return; // add error message
     try {
       const res = await api.user.register(email.value, password.value, name.value);
       // const res = await axios({ method: 'POST', url, data });
       console.log('response from server', res);
       localStorage.setItem('token', res.token);
-      this.props.UserLogin(res.user);
+      UserLogin(res.user);
     } catch (err) {
       console.log(err);
     }
   };
-
-  checkValidity(value, rules) {
-    let isValid = true;
-    if (!rules) return true;
-    if (rules.required) isValid = value.trim() !== '' && isValid;
-    if (rules.minLength) isValid = value.length >= rules.minLength && isValid;
-    if (rules.maxLength) isValid = value.length <= rules.maxLength && isValid;
-    if (rules.isEmail) {
-      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      isValid = pattern.test(value) && isValid;
-    }
-    if (rules.isNumeric) {
-      const pattern = /^\d+$/;
-      isValid = pattern.test(value) && isValid;
-    }
-
-    return isValid;
-  }
 
   input = (e, type) => {
     const { value } = e.target;
@@ -87,7 +86,7 @@ class RegisterForm extends Component {
           email: {
             ...controls.email,
             value,
-            valid: this.checkValidity(value, controls.email.validation),
+            valid: checkValidity(value, controls.email.validation),
           },
         };
         break;
@@ -97,7 +96,7 @@ class RegisterForm extends Component {
           password: {
             ...controls.password,
             value,
-            valid: this.checkValidity(value, controls.password.validation),
+            valid: checkValidity(value, controls.password.validation),
           },
         };
         break;
@@ -107,7 +106,7 @@ class RegisterForm extends Component {
           name: {
             ...controls.name,
             value,
-            valid: this.checkValidity(value, controls.name.validation),
+            valid: checkValidity(value, controls.name.validation),
           },
         };
         break;
@@ -118,13 +117,18 @@ class RegisterForm extends Component {
     this.setState({ controls: updatedControls });
   };
 
+
   displayError() {
-    if (this.state.badPW) return <MessageExampleError />;
+    const { badPW } = this.state;
+    if (badPW) return <MessageExampleError />;
+    return null;
   }
 
   render = () => {
     const { login } = this.props;
-    const { password, email, name } = this.state.controls;
+    const {
+      controls: { password, email, name }, badName, badEmail, badPW,
+    } = this.state;
 
     return (
       <div className="register-form">
@@ -133,7 +137,7 @@ class RegisterForm extends Component {
             <Form size="large" onSubmit={this.formSubmit}>
               <Segment stacked>
                 <Form.Input
-                  error={this.state.badName}
+                  error={badName}
                   fluid
                   icon="user"
                   iconPosition="left"
@@ -142,7 +146,7 @@ class RegisterForm extends Component {
                   onChange={e => this.input(e, 'name')}
                 />
                 <Form.Input
-                  error={this.state.badEmail}
+                  error={badEmail}
                   fluid
                   icon="mail"
                   iconPosition="left"
@@ -152,7 +156,7 @@ class RegisterForm extends Component {
                   onChange={e => this.input(e, 'email')}
                 />
                 <Form.Input
-                  error={this.state.badPW}
+                  error={badPW}
                   fluid
                   icon="lock"
                   iconPosition="left"
@@ -162,15 +166,17 @@ class RegisterForm extends Component {
                   onChange={e => this.input(e, 'pw')}
                 />
                 <Button type="formSubmit" color="teal" fluid size="large">
-Register
-</Button>
+
+
+                  {'Register'}
+                </Button>
               </Segment>
             </Form>
             <Message>
-Already have an account?
-<Button onClick={login} style={style.login_button}>
-Login
-</Button>
+              {'Already have an account?'}
+              <Button onClick={login} style={{ marginLeft: '10px' }}>
+                {'Login'}
+              </Button>
             </Message>
             {this.displayError()}
           </Grid.Column>
@@ -179,11 +185,3 @@ Login
     );
   };
 }
-const mapStateToProps = ({ user: { name: userName } }) => ({ userName });
-const mapDispatchToProps = dispatch => ({ UserLogin: user => dispatch(addToUser(user)) });
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
-
-var style = styler`
-  login_button
-    margin-left:10px
-`;

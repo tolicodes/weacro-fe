@@ -35,8 +35,7 @@ export default function reducer(state = initialState, action) {
       return updateList(state, state.lists, listOfTags);
     case DUMP_POSE:
       listOfTags[listName] = [...state.lists[listName]];
-      const deleteIndex = listOfTags[listName].indexOf(poseId);
-      listOfTags[listName].splice(deleteIndex, 1);
+      listOfTags[listName].splice(listOfTags[listName].indexOf(poseId), 1);
       return updateList(state, state.lists, listOfTags);
     default:
   }
