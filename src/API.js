@@ -22,7 +22,11 @@ async function getFromServer(url) {
 
 function get(url, offline) {
   if (offline) {
-    return JSON.parse(localStorage.getItem(url));
+    try {
+      return JSON.parse(localStorage.getItem(url));
+    } catch (err) {
+      return null;
+    }
   }
   return getFromServer(url);
 }

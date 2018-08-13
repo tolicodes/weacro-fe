@@ -14,7 +14,12 @@ export default class GalleryControl extends React.Component {
 
   slideTo = index => this.swipe.slide(index)
 
-  componentDidMount = () => { this.slideTo(this.props.currentSlide); }
+  componentDidMount = () => {
+    const { poses, currentSlide } = this.props;
+    if (poses) {
+      this.slideTo(currentSlide);
+    }
+  }
 
   render = () => {
     const {

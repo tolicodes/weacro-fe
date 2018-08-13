@@ -20,7 +20,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistedState = loadState();
 const store = createStore(
   connectRouter(history)(reducer),
-  persistedState,
+  persistedState || {},
   composeEnhancers(
     applyMiddleware(
       sagaMiddleware,
