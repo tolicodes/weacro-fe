@@ -1,5 +1,7 @@
-import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from '../utility';
+import produce from 'immer';
+import {
+  FILTER_DIFFICULTY, SET_TAG, SET_SLIDE_INDEX, SET_VIEW, FILTER_BY_NAME,
+} from '../actions/actionTypes';
 
 const initialState = {
   difficulty: 'All',
@@ -9,34 +11,30 @@ const initialState = {
   name: '',
 };
 
-const reducer = (state = initialState, action) => {
-  const {
-    type, difficulty, tag, currentSlide, device, name,
-  } = action;
-  const {
-    FILTER_DIFFICULTY, SET_TAG, SET_SLIDE_INDEX, SET_VIEW, FILTER_BY_NAME,
-  } = actionTypes;
-  let setState;
+const reducer = (state = initialState, {
+  type, difficulty, tag, currentSlide, device, name,
+}) => produce(state, (newState) => {
   switch (type) {
     case SET_TAG:
-      setState = { tag, currentSlide };
-      return updateObject(state, setState);
+      newState.tag = tag;
+      newState.currentSlide = currentSlide;
+      break;
     case FILTER_DIFFICULTY:
-      setState = { difficulty, currentSlide };
-      return updateObject(state, setState);
+      newState.difficulty = difficulty;
+      newState.currentSlide = currentSlide;
+      break;
     case SET_SLIDE_INDEX:
-      setState = { currentSlide };
-      return updateObject(state, setState);
+      newState.currentSlide = currentSlide;
+      break;
     case SET_VIEW:
-      setState = { device };
-      return updateObject(state, setState);
+      newState.device = device;
+      break;
     case FILTER_BY_NAME:
-      setState = { name };
-      return updateObject(state, setState);
+      newState.name = name;
+      break;
     default:
   }
-  return state;
-};
+});
 
 export default reducer;
 

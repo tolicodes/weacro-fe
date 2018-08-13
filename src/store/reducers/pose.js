@@ -1,20 +1,20 @@
 import api from 'API';
-import * as actionTypes from '../actions/actionTypes';
+import produce from 'immer';
+
+import { STORE_POSE } from '../actions/actionTypes';
 // import { updateObject } from '../utility';
 const initialState = {
   poses: api.poses.get(true) || false,
 };
 
-const reducer = (state = initialState, action) => {
-  const { type, pose } = action;
-  const { STORE_POSE } = actionTypes;
+const reducer = (state = initialState, { type, pose }) => produce(state, (newState) => {
   switch (type) {
     case STORE_POSE:
       if (state.poses.length === pose.length) return state;
-      return { ...state, poses: [...pose] };
+      newState.poses = pose;
+      break;
     default:
   }
-  return state;
-};
+});
 
 export default reducer;

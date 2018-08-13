@@ -1,7 +1,7 @@
-import * as actionTypes from '../actions/actionTypes';
+import produce from 'immer';
 import {
-  updateObject, updateList, addToInnerList, makeNewList,
-} from '../utility';
+  FILL_USER, LOG_OUT, COLLECT_POSE, DUMP_POSE,
+} from '../actions/actionTypes';
 
 const initialState = {
   id: null,
@@ -10,34 +10,25 @@ const initialState = {
   difficulty: '0',
   lists: {},
 };
-export default function reducer(state = initialState, action) {
-  let setState;
-  let listOfTags = {};
-  const {
-    user, listName, poseId, type,
-  } = action;
-  const {
-    FILL_USER, LOG_OUT, COLLECT_POSE, DUMP_POSE,
-  } = actionTypes;
-
+const reducer = (state = initialState, {
+  user, listName, poseId, type,
+}) => produce(state, (newState) => {
   switch (type) {
     case FILL_USER:
-      setState = user;
-      return updateObject(state, setState);
+      newState = user;
+      break;
     case LOG_OUT:
-      setState = initialState;
-      return updateObject(state, setState);
+      newState = initialState;
+      break;
     case COLLECT_POSE:
-      listOfTags = state.lists[listName]
-        ? addToInnerList(state.lists[listName], listName, poseId)
-        : makeNewList(listName, poseId);
-
-      return updateList(state, state.lists, listOfTags);
+      if (newState.lists[listName]) {
+        newState.lists[listName].push(poseId);
+      } else newState.lists[listName] = [poseId];
+      break;
     case DUMP_POSE:
-      listOfTags[listName] = [...state.lists[listName]];
-      listOfTags[listName].splice(listOfTags[listName].indexOf(poseId), 1);
-      return updateList(state, state.lists, listOfTags);
+      newState.lists[listName].splice(newState.lists[listName].indexOf(poseId), 1);
+      break;
     default:
   }
-  return state;
-}
+});
+export default reducer;
