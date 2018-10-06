@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { MenuItem, SearchIcon } from './style';
+import { MenuItem } from 'Common/Menu';
+import { SearchIcon } from './style';
 
 export default class Search extends PureComponent {
     state = { active: false }

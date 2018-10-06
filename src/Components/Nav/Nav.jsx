@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { Menu } from 'semantic-ui-react';
+import BackButton from 'UI/BackButton/BackButton';
 import DifficultyFilter from './Difficulty';
 import OptionsMenu from './Options';
 import ProfileMenu from './ProfileMenu';
 import Search from './Search';
 import TagChoice from './TagChoice';
-import BackButton from '../UI/BackButton/BackButton';
 
 const Nav = ({ pathname }) => (
   <Fragment>

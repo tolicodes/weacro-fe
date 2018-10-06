@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export const SwipeControllerWrapper = styled.div`
-height: 92vh;
+  height: 92vh;
 `;

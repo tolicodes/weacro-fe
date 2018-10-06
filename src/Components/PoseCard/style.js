@@ -3,7 +3,7 @@ import {
   Desktop,
   PhonePortrait,
   PhoneLandscape,
-} from 'Components/UI/DeviceRules';
+} from 'UI/DeviceRules';
 
 export const Card = styled.div`
 display: flex;

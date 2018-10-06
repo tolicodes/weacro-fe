@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import PageLayout from 'Components/UI/PageLayout';
-import NotFound from 'Components/UI/Pages/NotFound';
-import AboutUs from 'Components/UI/Pages/About';
-import SwipeControl from 'Components/UI/Swipe';
+import PageLayout from 'UI/PageLayout';
+import NotFound from 'Screen/NotFound';
+import AboutUs from 'Screen/About';
+import SwipeControl from 'UI/Swipe';
 import PoseMapper from 'Components/Mapper';
 
 const GalleryDisplay = () => (

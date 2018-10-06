@@ -12,31 +12,25 @@ const childrenType = {
   ]).isRequired,
 };
 
-function PC({ children }) {
-  return (
-    <Media query={Desktop}>
-      {children}
-    </Media>
-  );
-}
+const PC = ({ children }) => (
+  <Media query={Desktop}>
+    {children}
+  </Media>
+);
 PC.propTypes = childrenType;
 
-function Portrait({ children }) {
-  return (
-    <Media query={PhonePortrait}>
-      {children}
-    </Media>
-  );
-}
+const Portrait = ({ children }) => (
+  <Media query={PhonePortrait}>
+    {children}
+  </Media>
+);
 Portrait.propTypes = childrenType;
 
-function notLandscape({ children }) {
-  return (
-    <Media query={`not ${PhoneLandscape}`}>
-      {children}
-    </Media>
-  );
-}
+const notLandscape = ({ children }) => (
+  <Media query={`not ${PhoneLandscape}`}>
+    {children}
+  </Media>
+);
 notLandscape.propTypes = childrenType;
 
 export default {

@@ -1,9 +1,11 @@
 import React from 'react';
-import SwipeControl from 'components/UI/Swipe';
-import PoseMapper from 'components/Mapper';
+import SwipeControl from 'UI/Swipe';
+import PoseMapper from 'Components/Mapper';
 
-export default () => (
+const Gallery = () => (
   <SwipeControl>
     <PoseMapper />
   </SwipeControl>
 );
+
+export default Gallery;

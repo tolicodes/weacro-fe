@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadIf from 'Components/UI/LoadIf';
+import LoadIf from 'UI/LoadIf';
 import { Header } from './styled';
 
 const HeaderUI = ({ children }) => (

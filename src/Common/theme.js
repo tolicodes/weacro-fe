@@ -9,6 +9,8 @@ export default (rtl = false) => ({
   grey: '#eeeeee',
   sky: '#0b7eff',
   offWhite: 'rgb(250,251,253)',
+  red: 'rgb(255, 114, 87)', // BackButton
+  iconSize: '3.3rem',
   rtl,
   textDefaults: 'font-family:Ariel; font-size:20;',
 });

@@ -1,6 +1,6 @@
 
 import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
+import Icon from 'Common/Icon';
 
 export const BackButton = styled.div`
   display: flex;
@@ -8,10 +8,7 @@ export const BackButton = styled.div`
   justify-content: center;
   padding: 10px;
 `;
-export const ReplyIcon = styled(Icon).attrs({
-  style: { fontSize: '3.3rem' },
-})`
+export const ReplyIcon = styled(Icon('reply', 'big', 'red'))`
   cursor: pointer;
-  font-size: 3.3rem;
-  color: rgb(255, 114, 87);
+  color: ${({ theme }) => theme.red}
 `;

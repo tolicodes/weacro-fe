@@ -3,7 +3,7 @@ import {
   PhonePortrait,
   PhoneLandscape,
   Orange,
-} from 'ui/DeviceRules';
+} from 'UI/DeviceRules';
 
 
 export const Credit = styled.div`

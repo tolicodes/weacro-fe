@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-export default props => {
+export default (props) => {
   let inputElement = null;
-  
+
   switch (props.elementType) {
     case 'input':
       inputElement = <input {...props.elementConfig} value={props.value} onChange={props.changed} />;
@@ -28,7 +28,9 @@ export default props => {
 
   return (
     <div>
-      <label>{props.label}</label>
+      <label>
+        {props.label}
+      </label>
       {inputElement}
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadIf from '../../../UI/LoadIf';
+import LoadIf from 'UI/LoadIf';
 import {
   PopupModal, StyledLoginButton, LoginIcon, MenuItem,
 } from './style';

@@ -1,12 +1,4 @@
-import styled from 'styled-components';
-import { Icon } from 'semantic-ui-react';
+import Icon from 'Common/Icon';
 
-export const HomeIcon = styled(Icon).attrs({
-  name: 'home',
-})`
-  color: black;
-  `;
-export const AboutIcon = styled(Icon).attrs({
-  name: 'info circle',
-  size: 'big',
-})``;
+export const HomeIcon = Icon('home');
+export const AboutIcon = Icon('info circle');

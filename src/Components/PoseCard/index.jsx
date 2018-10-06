@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import LoadIf from 'Components/UI/LoadIf';
+import LoadIf from 'UI/LoadIf';
 import Heart from './Heart';
 import {
   TextDetails, Details, Img, TextArea, Title, Subtitle,

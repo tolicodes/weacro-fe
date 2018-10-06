@@ -1,10 +1,6 @@
-import { Icon, Menu } from 'semantic-ui-react';
 import styled from 'styled-components';
+import Icon from 'Common/Icon';
 
-export const MenuItem = styled(Menu.Item)``;
-export const SearchIcon = styled(Icon).attrs({
-  name: 'search',
-  size: 'big',
-})`
+export const SearchIcon = styled(Icon('search', 'big'))`
   margin: 0;
 `;
