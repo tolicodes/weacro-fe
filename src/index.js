@@ -3,12 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
 import WebFont from 'webfontloader';
-import { ConnectedRouter } from 'connected-react-router';
 import registerServiceWorker from 'registerServiceWorker';
-import Router from 'Router';
 import store from 'store';
-import history from 'store/history';
-import LoadInitialServerData from 'Startup';
+import App from './App';
 
 WebFont.load({
   google: {
@@ -19,11 +16,7 @@ WebFont.load({
 ReactDOM.render(
   /* eslint-disable */
   <Provider store={store}>
-    <LoadInitialServerData>
-      <ConnectedRouter history={history}>
-        <Router />
-      </ConnectedRouter>
-    </LoadInitialServerData>
+    <App />
   </Provider>,
   /* eslint-enable */
   document.getElementById('root'),
